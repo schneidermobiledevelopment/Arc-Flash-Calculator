@@ -241,5 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /NinjaReadMe.txt
-/ArcFlashCalculator/ArcFlashCalculator.Core/Model/ArcDuration
-/ArcFlashCalculator/ArcFlashCalculator.Core/Model
+
