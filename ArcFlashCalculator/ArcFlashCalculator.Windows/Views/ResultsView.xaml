@@ -1,0 +1,377 @@
+<UserControl x:Class="ArcFlashCalculator.WPF.Views.ResultsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Custom="clr-namespace:ArcFlashCalculator.WPF.Controls"
+             xmlns:extended="clr-namespace:ArcFlashCalculator.WPF"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" Background="White" Height="Auto" Width="Auto"
+             xmlns:localString = "clr-namespace:ArcFlashCalculator.Core.Locals;assembly=ArcFlashCalculator.Core">
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <Style x:Key="DangerLevelsText" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="#32AD3C" />
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding OverFortyCal}" Value="True">
+          <Setter Property="Foreground" Value="Red" />
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="HeaderStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="FontSize" Value="18"/>
+      <Setter Property="Foreground" Value="#FF38A648"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Margin" Value="10"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="MetadataCell" TargetType="{x:Type TextBlock}">
+      <Setter Property="Margin" Value="1"/>
+      <Setter Property="Background" Value="#EDEDED"/>
+      <Setter Property="Padding" Value="0,0,5,0"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="TextAlignment" Value="Right"/>
+    </Style>
+    <Style x:Key="HeaderDataCell" TargetType="{x:Type TextBlock}">
+      <Setter Property="Margin" Value="1"/>
+      <Setter Property="Background" Value="#EDEDED"/>
+      <Setter Property="Padding" Value="0,0,5,0"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="TextAlignment" Value="Center"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="TextWrapping" Value="Wrap"/>
+      <Setter Property="Height" Value="40"/>
+    </Style>
+    <Style x:Key="ValueCell" TargetType="{x:Type TextBlock}">
+      <Setter Property="Padding" Value="5,0,0,0"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+  </UserControl.Resources>
+  <Grid x:Name="ResultsGrid">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="473*"/>
+      <ColumnDefinition Width="489*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40"></RowDefinition>
+      <RowDefinition Height="560*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Rectangle Grid.ColumnSpan="2" Fill="#FFEEEEEF" Margin="0,0,0,2"/>
+    <TextBlock x:Name="HeaderLabel" Text="{x:Static localString:AppResources.ARC_Calculator_Result_Title}" Style="{StaticResource HeaderStyle}"/>
+    <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+      <StackPanel VerticalAlignment="Top" Orientation="Vertical" HorizontalAlignment="Stretch">
+        <Custom:GridControl HorizontalAlignment="Stretch" ShowCustomGridLines="True" GridLineBrush="Black" Margin="5,10,5,5" GridLineThickness="1">
+          <Custom:GridControl.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Custom:GridControl.RowDefinitions>
+          <Custom:GridControl.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+          </Custom:GridControl.ColumnDefinitions>
+          <TextBlock Grid.Row="0" Grid.Column="0" x:Name="PersonnelTextBlock" Text="{x:Static localString:AppResources.Personnel}" Style="{StaticResource MetadataCell}"  />
+          <TextBlock Grid.Row="0" Grid.Column="1" x:Name="PersonnelValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.Personnel}" Style="{StaticResource ValueCell}" />
+          <TextBlock Grid.Row="0" Grid.Column="2" x:Name="ActionTextBlock" Text="{x:Static localString:AppResources.Action}" Style="{StaticResource MetadataCell}" />
+          <TextBlock Grid.Row="0" Grid.Column="3" x:Name="ActionValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.Action}" Style="{StaticResource ValueCell}"  />
+
+          <TextBlock Grid.Row="1" Grid.Column="0" x:Name="LocationTextBlock" Text="{x:Static localString:AppResources.Location}" Style="{StaticResource MetadataCell}" />
+          <TextBlock Grid.Row="1" Grid.Column="1" x:Name="LocationValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.Location}" Style="{StaticResource ValueCell}"  />
+          <TextBlock Grid.Row="1" Grid.Column="2" x:Name="DateTextBlock" Text="{x:Static localString:AppResources.Date}" Style="{StaticResource MetadataCell}"/>
+          <TextBlock Grid.Row="1" Grid.Column="3" x:Name="DateValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.CalculationDate, StringFormat={}{0:dddd, MMMM dd, yyyy}}" Style="{StaticResource ValueCell}"/>
+        </Custom:GridControl>
+        <Custom:GridControl HorizontalAlignment="Stretch" VerticalAlignment="Center">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="40*"/>
+          </Grid.ColumnDefinitions>
+          <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5,10,5,10" VerticalAlignment="Top">
+            <TextBlock x:Name="ArcFlashEstimateTextBlock" Foreground="#48B150" FontSize="12" TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,0" ><Run FontWeight="Bold" Text="{x:Static localString:AppResources.Arc_Flash_Estimate}"/></TextBlock>
+            <Border BorderBrush="Black" BorderThickness="1">
+              <StackPanel>
+                <TextBlock x:Name="DangerLevelsTextBlock" Text="{x:Static localString:AppResources.Incident_Energy}" Foreground="#56585D" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Padding="5"/>
+                <TextBlock Height="40" x:Name="IncidentEnergyValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.IncidentEnergy}" FontSize="30" FontWeight="ExtraBold" TextAlignment="Center" VerticalAlignment="Center" Style="{StaticResource DangerLevelsText}"/>
+                <TextBlock x:Name="IncidentEnergyMeasureTextBlock" Text="{x:Static localString:AppResources.Incident_Energy_Measure}" TextAlignment="Center" VerticalAlignment="Center" Foreground="#626469" Padding="5,2" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding OverFortyCal, Converter={StaticResource BoolToVisibilityConverter}}">
+                  <Image Source="../Images/error.png" Width="20" Height="20"></Image>
+                  <TextBlock x:Name="exceeds40TextBlock" Text="{x:Static localString:AppResources.Exceeds_40}" Foreground="Red" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Background="#FFD100">
+                  <StackPanel Orientation="Horizontal" Background="#FFD100" HorizontalAlignment="Center">
+                    <TextBlock x:Name="WorkingDistanceTextBlock" FontWeight="Black" FontSize="16" Text="{x:Static localString:AppResources.At_Working_Distance}" />
+                    <TextBlock x:Name="WorkingDistanceValueEnergyDataTextBlock" FontWeight="Black" FontSize="18" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.WorkingDistance, StringFormat={x:Static localString:AppResources.InchesStandard}}" TextAlignment="Center" Style="{StaticResource DangerLevelsText}" VerticalAlignment="Center" Visibility="{Binding HasStandardWorkingDistance, Converter={StaticResource BoolToVisibilityConverter}}" />
+                    <TextBlock x:Name="WorkingDistanceValueEnergyDangerDataTextBlock" FontWeight="Black" FontSize="18" Validation.ErrorTemplate="{x:Null}" Text="{Binding WorkingDistanceRounded, StringFormat={x:Static localString:AppResources.InchesNonStandard}}" TextAlignment="Center" VerticalAlignment="Center" Style="{StaticResource DangerLevelsText}" Visibility="{Binding CalculationInput.HasCustomWorkingDistance, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                  </StackPanel>
+                  <Button Content="Find Safe Working Distance for Available PPE" Width="300" Command="{Binding FindSafeWorkingDistanceCommand}" Visibility="{Binding ShowFindSafeWorkingDistance, Converter={StaticResource BoolToVisibilityConverter}}"></Button>
+                </StackPanel>
+              </StackPanel>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="0,-1,0,0"  >
+              <StackPanel>
+                <TextBlock x:Name="CategoryTextBlock" Text="{x:Static localString:AppResources.PPE_LEVEL_REQUIRED}" TextAlignment="Center"  Padding="5" Foreground="#56585D" FontWeight="Bold" />
+                <TextBlock  x:Name="CategoryValueTextBlock" TextAlignment="Center" Padding="5" Style="{StaticResource DangerLevelsText}"><Run FontWeight="Bold" FontSize="33" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.HazardCat}" /></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding OverFortyCal, Converter={StaticResource BoolToVisibilityConverter}}">
+                  <Image Source="../Images/error.png" Width="20" Height="20"></Image>
+                  <TextBlock x:Name="DangerSummaryValueTextBlock" TextAlignment="Left" Padding="5" Foreground="Red" TextWrapping="Wrap"><Run FontWeight="Bold" Text="{x:Static localString:AppResources.Danger_Summary}"  /></TextBlock>
+                </StackPanel>
+                <Custom:GridControl HorizontalAlignment="Stretch" ShowCustomGridLines="True" GridLineBrush="Black" Margin="5,10,5,5" GridLineThickness="1">
+                  <Custom:GridControl.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <extended:RowDefinitionExtended Height="40*" Visible="{Binding OverFortyCal}"/>
+                    <extended:RowDefinitionExtended Height="40*" Visible="{Binding IsLevelZero}"/>
+                    <extended:RowDefinitionExtended Height="40*" Visible="{Binding IsLevelTwo}"/>
+                    <extended:RowDefinitionExtended Height="40*" Visible="{Binding IsLevelFour}"/>
+                  </Custom:GridControl.RowDefinitions>
+                  <Custom:GridControl.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                  </Custom:GridControl.ColumnDefinitions>
+                  <TextBlock Grid.Row="0" Grid.Column="0" x:Name="ClothingDescriptionTextBlock" Text="{x:Static localString:AppResources.Clothing_Description}" Style="{StaticResource HeaderDataCell}" />
+                  <TextBlock Grid.Row="0" Grid.Column="1" x:Name="ReqMinTextBlock" Text="{x:Static localString:AppResources.Required_Minimum_Arc_Rating}" Style="{StaticResource HeaderDataCell}" />
+                  <TextBlock Grid.Row="1" Grid.Column="0" Text="N/A" TextAlignment="Center"></TextBlock>
+                  <TextBlock Grid.Row="1" Grid.Column="1" Text="N/A" TextAlignment="Center"></TextBlock>
+                  <StackPanel Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="{x:Static localString:AppResources.ClothingDescriptionDetails8PartA}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="{x:Static localString:AppResources.Or}" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic"></TextBlock>
+                    <TextBlock Text="{x:Static localString:AppResources.ClothingDescriptionDetails8PartB}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                  </StackPanel>
+                  <TextBlock Grid.Row="2" Grid.Column="1" Text="{x:Static localString:AppResources.LessThanEqualToOnePointTwo}" TextAlignment="Center"></TextBlock>
+                  <StackPanel Grid.Row="3" Grid.Column="0">
+                    <TextBlock Text="{x:Static localString:AppResources.ClothingDescriptionDetails8PartA}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="{x:Static localString:AppResources.Or}" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic"></TextBlock>
+                    <TextBlock Text="{x:Static localString:AppResources.ClothingDescriptionDetails8PartB}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                  </StackPanel>
+                  <TextBlock Grid.Row="3" Grid.Column="1" Text="8" TextAlignment="Center"></TextBlock>
+                  <StackPanel Grid.Row="4" Grid.Column="0">
+                    <TextBlock Text="{x:Static localString:AppResources.ClothingDescriptionDetails40PartA}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="{x:Static localString:AppResources.ClothingDescriptionDetails40PartB}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                  </StackPanel>
+                  <TextBlock Grid.Row="4" Grid.Column="1" Text="40" TextAlignment="Center"></TextBlock>
+                </Custom:GridControl>
+              </StackPanel>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="0,-1,0,0"  >
+              <StackPanel>
+                <TextBlock Text="{x:Static localString:AppResources.Insulating_Gloves_Class}" TextAlignment="Center" Foreground="#56585D" FontWeight="Bold" Padding="5" />
+                <TextBlock  TextAlignment="Center" Padding="5" Style="{StaticResource DangerLevelsText}"><Run FontWeight="Bold" FontSize="33" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.InsulatingGloveClass}"/></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                  <Image Source="../Images/warning.png"></Image>
+                  <TextBlock Height="25" TextAlignment="Center" Padding="5" Text="{Binding CalculationInput.NominalVoltage, StringFormat={x:Static localString:AppResources.Voltage_Shock_Hazard_AC}}" Validation.ErrorTemplate="{x:Null}" Visibility="{Binding CalculationInput.IsAlternatingCurrent, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                  <TextBlock Height="25" TextAlignment="Center" Padding="5" Text="{Binding CalculationInput.VoltageOfBattery, StringFormat={x:Static localString:AppResources.Voltage_Shock_Hazard_DC}}" Validation.ErrorTemplate="{x:Null}" Visibility="{Binding IsDirectCurrent, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                </StackPanel>
+              </StackPanel>
+            </Border>
+            <Custom:GridControl  GridLineBrush="Black" GridLineThickness="1" ShowCustomGridLines="True" HorizontalAlignment="Stretch" Margin="0,-1,0,0">
+              <Custom:GridControl.RowDefinitions>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowAlternatingCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowAlternatingCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowAlternatingCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowAlternatingCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowAlternatingCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowAlternatingCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowAlternatingCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowDirectCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowDirectCurrentFields}"/>
+                <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowDirectCurrentFields}"/>
+              </Custom:GridControl.RowDefinitions>
+              <Custom:GridControl.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="37*"/>
+              </Custom:GridControl.ColumnDefinitions>
+              <!-- 1 row Nominal voltage -->
+              <TextBlock Grid.Row="0" Grid.Column="0" x:Name="NominalVoltageTextBlock" Text="{x:Static localString:AppResources.Nominal_Working_Voltage}" Style="{StaticResource MetadataCell}"/>
+              <TextBlock Grid.Row="0" Grid.Column="1" x:Name="NominalVoltageValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.NominalVoltage}" Style="{StaticResource ValueCell}" Background="White" Margin="0,1,1,1" />
+              <!-- 2 row Flash Protection Boundary -->
+              <TextBlock Grid.Row="1" Grid.Column="0" x:Name="FlashProtectionBoundaryTextBlock" Text="{x:Static localString:AppResources.Arc_Flash_Boundary_Feet}" Style="{StaticResource MetadataCell}" />
+              <TextBlock Grid.Row="1" Grid.Column="1" x:Name="FlashProtectionBoundaryValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.FPB, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Margin="0,1,1,1"  />
+              <!-- 3 row Bolted Fault Current-->
+              <Rectangle Grid.Row="2" Grid.Column="0" Fill="#EDEDED" Margin="1"></Rectangle>
+              <TextBlock Grid.Row="2" Grid.Column="0" x:Name="BoltedFaultCurrentTextBlock" Text="{x:Static localString:AppResources.Bolted_Fault_Current_amps}" Style="{StaticResource MetadataCell}"/>
+              <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock x:Name="BoltedFaultCurrentValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding BoltedFaultCurrentInAmps, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Margin="0,1"  />
+                <Button Height="19" Width="120" x:Name="UseForNewCalculationButton" Content="{x:Static localString:AppResources.UseForNewCalculation}" Command="{Binding UseForNewCalculation}" FontSize="10" />
+              </StackPanel>
+              <!-- 4 row Estimated Arc Current -->
+              <TextBlock Grid.Row="3" Grid.Column="0" x:Name="EstimatedArcCurrentTextBlock" Text="{x:Static localString:AppResources.Estimated_Arc_Fault_Current_amps}" Style="{StaticResource MetadataCell}"/>
+              <TextBlock Grid.Row="3" Grid.Column="1" x:Name="EstimatedArcCurrentTextBlockValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding EstimatedArcFaultCurrentInAmps, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="0,1"   />
+              <!-- 5 row Incident Energy 18" -->
+              <TextBlock Grid.Row="4" Grid.Column="0" x:Name="IncidentEnergy18TextBlock" Text="{x:Static localString:AppResources.Incident_Energy_18}" Style="{StaticResource MetadataCell}" />
+              <TextBlock Grid.Row="4" Grid.Column="1" x:Name="IncidentEnergy18ValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.IE18, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="0,1"   />
+              <!-- 6 row Incident Energy 18" -->
+              <TextBlock Grid.Row="5" Grid.Column="0"  x:Name="IncidentEnergy24TextBlock" Text="{x:Static localString:AppResources.Incident_Energy_24}" Style="{StaticResource MetadataCell}" />
+              <TextBlock Grid.Row="5" Grid.Column="1" x:Name="IncidentEnergy24ValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.IE24, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="0,1"   />
+              <!-- 7 row Incident Energy 18" -->
+              <TextBlock Grid.Row="6" Grid.Column="0"  x:Name="IncidentEnergy36TextBlock" Text="{x:Static localString:AppResources.Incident_Energy_36}" Style="{StaticResource MetadataCell}" />
+              <TextBlock Grid.Row="6" Grid.Column="1" x:Name="IncidentEnergy36ValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.IE36, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="0,1"   />
+              <!-- 8 row Incident Energy 18" -->
+              <TextBlock Grid.Row="7" Grid.Column="0"  x:Name="BatteryStringVoltageTextBlock" Text="{x:Static localString:AppResources.Battery_String_Voltage}" Style="{StaticResource MetadataCell}" />
+              <TextBlock Grid.Row="7" Grid.Column="1" x:Name="BatteryStringVoltageValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.VoltageOfBattery}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="0,1"   />
+              <!-- 10 row Incident Energy 18" -->
+              <TextBlock Grid.Row="8" Grid.Column="0"  x:Name="BatteryEnclosureTextBlock" Text="{x:Static localString:AppResources.Arc_Flash_Boundary_Inches}" Style="{StaticResource MetadataCell}" />
+              <TextBlock Grid.Row="8" Grid.Column="1" x:Name="BatteryEnclosureValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.ArcFlashBoundary, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="0,1"   />
+              <!-- 12 row Incident Energy 18" -->
+              <TextBlock Grid.Row="9" Grid.Column="0"  x:Name="IncidentEnergyLess50TextBlock" Text="{x:Static localString:AppResources.Incident_Engery_At_Less_Than_50_Volts}" Style="{StaticResource MetadataCell}" />
+              <TextBlock Grid.Row="9" Grid.Column="1" x:Name="IncidentEnergyLess50ValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.IE50v, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="0,1"   />
+            </Custom:GridControl>
+            <!--<Border BorderBrush="Black" VerticalAlignment="Stretch" BorderThickness="1" Margin="0,-1,0,0">-->
+            <Button Width="200" Background="Transparent" BorderBrush="White" BorderThickness="0" HorizontalAlignment="Center" Command="{Binding StandardWorkingDistanceCommand}" Margin="10">
+              <TextBlock x:Name="StandardWorkingDistanceTextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="#3BA3FD"><Run Text="{x:Static localString:AppResources.Standard_Working_Distances}" TextDecorations="Underline"/></TextBlock>
+            </Button>
+            <!--</Border>-->
+          </StackPanel>
+          <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,10,5,10" VerticalAlignment="Top">
+            <TextBlock x:Name="CircuitDiagramTextBlock" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" ><Run FontWeight="Bold" Text="{x:Static localString:AppResources.Circuit_Diagram_Heading}"/></TextBlock>
+            <Border BorderBrush="Black" BorderThickness="1">
+              <ContentControl prism:RegionManager.RegionName="CircuitDiagramResultsRegion" Height="Auto" Width="Auto" Margin="0,0,5,0" />
+            </Border>
+          </StackPanel>
+        </Custom:GridControl>
+
+        <Custom:GridControl GridLineBrush="Black" ShowCustomGridLines="True" GridLineThickness="1" HorizontalAlignment="Stretch" Visibility="{Binding ShowAlternatingCurrentFields, Converter={StaticResource BoolToVisibilityConverter}}" Margin="5">
+          <Grid.RowDefinitions>
+            <!--General-->
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <!--Conductor-->
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <!-- Transformer-->
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <!-- Arc Duration-->
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <!-- Breaker Settings-->
+            <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowArcDurationCalculationFields}"/>
+            <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowArcDurationCalculationFields}"/>
+            <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowArcDurationCalculationFields}"/>
+            <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowArcDurationCalculationFields}"/>
+            <extended:RowDefinitionExtended Height="Auto" Visible="{Binding ShowArcDurationCalculationFields}"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+          </Grid.ColumnDefinitions>
+          <!-- General-->
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static localString:AppResources.General_Heading}" Margin="1,1" Grid.ColumnSpan="4" TextAlignment="Left" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static localString:AppResources.Voltage_Type}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="1" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding VoltageType}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+          <TextBlock Grid.Row="1" Grid.Column="2" Text="{x:Static localString:AppResources.Source_Fault_Current_amps}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="1" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.SourceFaultCurrent}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static localString:AppResources.Equipment_Type}"  Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="2" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.EquipmentType.Name}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+          <TextBlock Grid.Row="2" Grid.Column="2" Text="{x:Static localString:AppResources.Equipment_Enclosure}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="2" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding EquipmentEnclosure}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static localString:AppResources.Grounding_Method}" Style="{StaticResource MetadataCell}" Margin="1,2"/>
+          <TextBlock Grid.Row="3" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding Grounding}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+
+          <!--Transformer-->
+          <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static localString:AppResources.Transformer_Heading}" Margin="1,1" Grid.ColumnSpan="4" TextAlignment="Left" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+          <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static localString:AppResources.Transformer}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="5" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding Transformer}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+          <TextBlock Grid.Row="5" Grid.Column="2" Text="{x:Static localString:AppResources.Transformer_Impedence}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="5" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.XfmrImpedance}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static localString:AppResources.Primary_Voltage}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="6" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.PrimaryVoltage}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+          <TextBlock Grid.Row="6" Grid.Column="2" x:Name="TransformerKVATextBlock" Text="{x:Static localString:AppResources.Transformer_KVA}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="6" Grid.Column="3" x:Name="TransformerKVAValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.XfmrKVA}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <!--Conductor-->
+          <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static localString:AppResources.Conductor_Heading}" Margin="1,1" Grid.ColumnSpan="4" TextAlignment="Left" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+          <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static localString:AppResources.Conductor}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding VoltageConductor}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+          <TextBlock Grid.Row="8" Grid.Column="2" Text="{x:Static localString:AppResources.Conductors_per_Phase}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="8" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ConductorPerPhase}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static localString:AppResources.Conductor_Size}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="9" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ConductorSize.Size}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+          <TextBlock Grid.Row="9" Grid.Column="2" Text="{x:Static localString:AppResources.Conductor_Length}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="9" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ConductorLength}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          
+          <!-- Arc Duration-->
+          <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static localString:AppResources.Arc_Duration}" Margin="1,1" Grid.ColumnSpan="4" TextAlignment="Left" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+          <TextBlock Grid.Row="11" Grid.Column="0"  Text="{x:Static localString:AppResources.Estimated_Arc_Fault_Current_amps}" Style="{StaticResource MetadataCell}"/>
+          <TextBlock Grid.Row="11" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding EstimatedArcFaultCurrentInAmps, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Margin="1,1" />
+          <TextBlock Grid.Row="11" Grid.Column="2" Text="{x:Static localString:AppResources.Sensor_Rating}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="11" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.SensorRating}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <TextBlock Grid.Row="12" Grid.Column="0" x:Name="ArcDurationTextBlock" Text="{x:Static localString:AppResources.Arc_Duration_seconds}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <StackPanel Grid.Row="12" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,2">
+            <TextBlock  x:Name="ArcDurationValueTextBlock" VerticalAlignment="Stretch" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDurationValue}" Style="{StaticResource ValueCell}" Margin="0,0,5,0" />
+            <TextBlock  x:Name="calculatedTextBlock" TextAlignment="Center" VerticalAlignment="Stretch" Margin="5,0,5,0" HorizontalAlignment="Stretch" Foreground="#A0001A"  ><Run FontWeight="Bold" Validation.ErrorTemplate="{x:Null}" Text="{Binding ArcDurationCalculationMethodText}"/></TextBlock>
+          </StackPanel>
+          <TextBlock Grid.Row="12" Grid.Column="2" Text="{x:Static localString:AppResources.Multiple_Of_Sensor_Rating}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="12" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.MultipleOfSensorRating, StringFormat=N2}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <!-- Breaker Settings-->
+          <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static localString:AppResources.Breaker_Settings_Heading}" Margin="1,1" Grid.ColumnSpan="4" TextAlignment="Left" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+          <TextBlock Grid.Row="14" Grid.Column="0" x:Name="DeviceManufacturerTextBlock" Text="{x:Static localString:AppResources.Device_Manufacturer}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="14" Grid.Column="1" x:Name="DeviceManufacturerValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.Manufacturer.Name}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+          <TextBlock Grid.Row="14" Grid.Column="2" x:Name="LongTimeDelayTextBlock" Text="{x:Static localString:AppResources.Long_Time_Delay}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="14" Grid.Column="3" x:Name="LongTimeDelayValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.LongTimeDelay.Value}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+
+          <TextBlock Grid.Row="15" Grid.Column="0" x:Name="BreakerStyleTextBlock" Text="Breaker Style " Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="15" Grid.Column="1" x:Name="BreakerStyleValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.BreakerStyle.Name}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+          <TextBlock Grid.Row="15" Grid.Column="2" x:Name="ShortTimePickupTextBlock" Text="{x:Static localString:AppResources.Short_Time_Pickup}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="15" Grid.Column="3" x:Name="ShortTimePickupValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.ShortTimePickup.Value}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+
+          <TextBlock Grid.Row="16" Grid.Column="0" x:Name="TripUnitTextBlock" Text="{x:Static localString:AppResources.Trip_Unit_Type}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="16" Grid.Column="1" x:Name="TripUnitValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.TripUnitType.Name}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+          <TextBlock Grid.Row="16" Grid.Column="2" x:Name="ShortTimeDelayTextBlock" Text="{x:Static localString:AppResources.Short_Time_Delay}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="16" Grid.Column="3" x:Name="ShortTimeDelayValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.ShortTimeDelay.Value}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0"  />
+
+          <TextBlock Grid.Row="17" Grid.Column="0" x:Name="LongTimePickupTextBlock" Text="{x:Static localString:AppResources.Long_Time_Pickup}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="17" Grid.Column="1" x:Name="LongTimePickupValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.LongTimePickup}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+          <TextBlock Grid.Row="17" Grid.Column="2" x:Name="InstantaneousTextBlock" Text="{x:Static localString:AppResources.Instantaneous}" Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="17" Grid.Column="3" x:Name="InstantaneousValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationInput.ArcDuration.Instantaneous.Value}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+
+        </Custom:GridControl>
+
+        <Custom:GridControl GridLineBrush="Black" ShowCustomGridLines="True" GridLineThickness="1" HorizontalAlignment="Stretch" Visibility="{Binding ShowDirectCurrentFields, Converter={StaticResource BoolToVisibilityConverter}}" Margin="5">
+          <Grid.RowDefinitions>
+            <!--General-->
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="Auto"/>
+            <extended:RowDefinitionExtended Height="*"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+          </Grid.ColumnDefinitions>
+
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static localString:AppResources.General_Heading}" Margin="1,1" Grid.ColumnSpan="4" TextAlignment="Left" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static localString:AppResources.Voltage_Type}"  Style="{StaticResource MetadataCell}" Margin="1,2" />
+          <TextBlock Grid.Row="1" Grid.Column="1" Validation.ErrorTemplate="{x:Null}" Text="{Binding VoltageType}" TextAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,0" />
+          <TextBlock Grid.Row="1" Grid.Column="2"  Text="{x:Static localString:AppResources.Battery_Enclosure}" Style="{StaticResource MetadataCell}" />
+          <TextBlock Grid.Row="1" Grid.Column="3" Validation.ErrorTemplate="{x:Null}" Text="{Binding BatteryEnclosure, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White" Grid.ColumnSpan="2" Margin="5,5,5,1"   />
+
+          <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2">
+            <TextBlock x:Name="MaxAvailableShortCircuitTextBlock" Text="{x:Static localString:AppResources.Maximum_Available_Short}" Style="{StaticResource MetadataCell}" />
+            <TextBlock Text="{x:Static localString:AppResources.Circuit_Amps}" Style="{StaticResource MetadataCell}" Margin="1,-1,1,1" />
+          </StackPanel>
+          <TextBlock Grid.Row="2" Grid.Column="1" x:Name="MaxAvailableShortCircuitValueTextBlock" Validation.ErrorTemplate="{x:Null}" Text="{Binding CalculationOutput.MASC, StringFormat=N2}" Style="{StaticResource ValueCell}" Background="White"  Margin="5,5,5,1"   />
+
+        </Custom:GridControl>
+      </StackPanel>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

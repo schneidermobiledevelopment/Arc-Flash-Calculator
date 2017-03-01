@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             x:Class="ArcFlashCalculator.Forms.Views.ACCircuitDiagram"
+             Title="Arc Flash Calculator"
+             NavigationPage.BackButtonTitle="Back">
+  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+    <custom:TitleBar/>
+    <custom:CustomTableView Intent="Form" HasUnevenRows="true" HorizontalOptions="Fill"  VerticalOptions="Start"  HeightRequest="50">
+      <TableRoot>
+        <TableSection Title="Circuit Diagram Preview"/>
+      </TableRoot>
+    </custom:CustomTableView>
+    <ScrollView>
+    <!--AC Diagram-->
+      <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Padding="10,5" RowSpacing="0" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="20*" />
+          <ColumnDefinition Width="20*" />
+          <ColumnDefinition Width="50*" />
+          <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="65"/>
+          <RowDefinition Height="{Binding CalculationInput.HasTransformer,  Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='HasCable'}"/>
+          <RowDefinition Height="{Binding CalculationInput.HasCable, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='HasXfmr'}"/>
+          <RowDefinition Height="104.5"/>
+          <RowDefinition Height="51.5"/>
+        </Grid.RowDefinitions>
+        <!--Source Fault Current-->
+        <Image Source="DiagramSFC.png" Grid.Column="1" Grid.Row="0" HeightRequest="45" VerticalOptions="EndAndExpand" Aspect="AspectFit" Margin="0"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2" Grid.Row="0" Padding="0,10"  Spacing="0">
+          <Label Text="Source Fault Current" HorizontalOptions="Center" />
+          <Label Text="{Binding CalculationInput.SourceFaultCurrent, StringFormat='{0} A'}" HorizontalOptions="Center" />
+        </StackLayout>
+        <!--Has Transformer-->
+        <Image Source="DiagramXfmr.png" Grid.Column="1" Grid.Row="1" Aspect="AspectFit" HeightRequest="110" Margin="0"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand" Grid.Column="2" Grid.Row="1" Padding="0,10"  Spacing="0">
+          <Label Text="{Binding CalculationInput.XfmrKVA, StringFormat='{0} KVA'}" HorizontalOptions="Center" />
+          <Label Text="{Binding CalculationInput.PrimaryVoltage, StringFormat='{0}V Primary'}" HorizontalOptions="Center" />
+          <Label Text="{Binding CalculationInput.NominalVoltage, StringFormat='{0}V Secondary'}" HorizontalOptions="Center" />
+          <Label Text="{Binding CalculationInput.XfmrImpedance, StringFormat='{0} %Z'}" HorizontalOptions="Center" />
+        </StackLayout>
+        <!--Has Cable-->
+        <Image Source="DiagramCable.png" Grid.Column="1" Grid.Row="2" Aspect="AspectFit" HeightRequest="110" Margin="0" TranslationX="-.5"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand" Grid.Column="2" Grid.Row="2" Padding="0,10" Spacing="0" >
+          <Label Text="{Binding CalculationInput.ConductorLength, StringFormat='{0} ft'}" HorizontalOptions="Center" />
+          <Label Text="{Binding CalculationInput.ConductorPerPhase, StringFormat='{0} Conductors per phase'}" HorizontalOptions="Center" />
+          <Label Text="{Binding CalculationInput.ConductorSize.Size, StringFormat='{0} Kcmil/AWG'}" HorizontalOptions="Center" />
+        </StackLayout>
+        <!--Arc Duration-->
+        <Image Source="DiagramArcDuration.png" Grid.Column="1" Grid.Row="3" Aspect="AspectFit" HeightRequest="104.5" TranslationX="4" />
+        <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand" Grid.Column="2" Grid.Row="3" Padding="0,10,0,0" Spacing="0">
+          <Label Text="Arc Duration" HorizontalOptions="Center" VerticalOptions="Start" />
+          <Label Text="{Binding CalculationInput.ArcDurationValue, StringFormat='{0:N2} Sec'}" HorizontalOptions="Center" VerticalOptions="Center" />
+        </StackLayout>
+        <!-- Working Point -->
+        <Image Source="DiagramPointOfWork.png" Grid.Column="1" Grid.Row="4" Aspect="AspectFit" HeightRequest="51.5" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand" Grid.Column="2" Grid.Row="4" Padding="0,10,0,0" Spacing="0">
+          <Label Text="Point of Work" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+      </Grid>
+      <!--End of AC Diagram-->
+    </ScrollView>
+      <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+        <Image x:Name="bntStartOver" WidthRequest="50" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" Margin="0,7" >
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer
+                    Command="{Binding StartOverCommand}"
+                    NumberOfTapsRequired="1" />
+          </Image.GestureRecognizers>
+        </Image>
+        <!--<Label Text="BACK" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#43A0FD">
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer
+                    Command="{Binding BackCommand}"
+                    NumberOfTapsRequired="1" />
+          </Label.GestureRecognizers>
+        </Label>-->
+        <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#3DCD58">
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer
+                    Command="{Binding NextCommand}"
+                    NumberOfTapsRequired="1" />
+          </Label.GestureRecognizers>
+        </Label>
+      </StackLayout>
+  </StackLayout>
+</ContentPage>

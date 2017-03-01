@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.TechnicalHelp"
+             Title="Technical Help">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CloseCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+  <StackLayout Spacing="0">
+    <StackLayout Padding="20,0" BackgroundColor="#E6E6E6">
+      <Label Text="Working Conditions Definitions" HeightRequest="40" TextColor="Black" VerticalTextAlignment="Center"/>
+    </StackLayout>
+    <ScrollView Padding="0,0,0,20">
+      <StackLayout Padding="20,0" Spacing="0">
+        <Label x:Name="lblTitle1" Margin="0,15,0,0" Text="{Binding Title1}" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="lblSubtitle1" Text="{Binding Subtitle1}"/>
+        <Label x:Name="lblTitle2" Margin="0,15,0,0" Text="{Binding Title2}" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="lblSubtitle2" Text="{Binding Subtitle2}"/>
+        <Label x:Name="lblTitle3" Margin="0,15,0,0" Text="{Binding Title3}" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="lblSubtitle3" Text="{Binding Subtitle3}"/>
+        <Label x:Name="lblTitle4" Margin="0,15,0,0" Text="{Binding Title4}" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="lblSubtitle4" Text="{Binding Subtitle4}"/>
+        <Label x:Name="lblTitle5" Margin="0,15,0,0" Text="{Binding Title5}" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="lblSubtitle5" Text="{Binding Subtitle5}"/>
+        <Label x:Name="lblTitle6" Margin="0,15,0,0" Text="{Binding Title6}" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="lblSubtitle6" Text="{Binding Subtitle6}"/>
+      </StackLayout>
+    </ScrollView>
+  </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

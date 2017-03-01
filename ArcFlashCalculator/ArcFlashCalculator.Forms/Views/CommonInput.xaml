@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             xmlns:forms="clr-namespace:ArcFlashCalculator.Forms;assembly=ArcFlashCalculator.Forms"
+             x:Class="ArcFlashCalculator.Forms.Views.CommonInput"
+             NavigationPage.BackButtonTitle="Back"
+             Title="Arc Flash Calculator">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Technical Help" Icon="Help.png" Command="{Binding HelpCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+  <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0" >
+    <custom:TitleBar/>
+    <custom:CustomTableView Intent="Form" VerticalOptions="Fill" HasUnevenRows="true">
+      <TableRoot>
+        <TableSection Title="Working Conditions">
+          <!--Personnel-->
+          <custom:CustomEntryCell x:Name="personnel" LabelText="{forms:Translate Personnel}" IsRequired="false" EntryPlaceholder="{forms:Translate Personnel_Example}" EntryText="{Binding CalculationInput.Personnel}" />
+          <!--Location-->
+          <custom:CustomEntryCell x:Name="location" LabelText="{forms:Translate Location}" IsRequired="false" EntryPlaceholder="{forms:Translate Location_Example}" EntryText="{Binding CalculationInput.Location}"/>
+          <!--Action-->
+          <custom:CustomEntryCell x:Name="action" LabelText="{forms:Translate Action}" IsRequired="false" EntryPlaceholder="{forms:Translate Action_Example}" EntryText="{Binding CalculationInput.Action}"/>
+          <!--Date-->
+          <ViewCell>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <Grid.Padding>
+                  <OnPlatform x:TypeArguments="Thickness"
+                      Android="20,0" iOS="20,10"/>
+                </Grid.Padding>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="70*" />
+              </Grid.ColumnDefinitions>
+              <custom:LabelRequired Grid.Column="0" Text="{forms:Translate Date}" IsRequired="false" VerticalOptions="Center" HorizontalOptions="Start"/>
+              <DatePicker Date="{Binding CalculationInput.CalculationDate, Mode=TwoWay}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" MinimumDate ="{Binding MinimumDate}">
+                <DatePicker.Format>MMMM dd, yyyy</DatePicker.Format>
+              </DatePicker>
+            </Grid>
+          </ViewCell>
+          <!--Voltage Type-->
+          <ViewCell>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,5" HeightRequest="30">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="60*" />
+              </Grid.ColumnDefinitions>
+              <Grid.Children>
+                 <custom:LabelRequired Grid.Column="0" Text="{forms:Translate Voltage_Type}" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <!--<StackLayout Grid.Column="1" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Spacing="20">-->
+                  <!--<OnPlatform x:TypeArguments="View">
+                    
+                    <OnPlatform.Android>-->
+                      <StackLayout Grid.Column="1" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Spacing="20">
+                      <custom:RadioButton Text="{forms:Translate Voltage_Type_AC}" HorizontalOptions="EndAndExpand" Checked="{Binding CalculationInput.IsAlternatingCurrent , Mode=TwoWay, Converter={StaticResource BooleanConverter}}" />
+                       <custom:RadioButton Text="{forms:Translate Voltage_Type_DC}" HorizontalOptions="End" Checked="{Binding CalculationInput.IsAlternatingCurrent , Mode=TwoWay, Converter={StaticResource InverseBooleanConverter}}"/>
+                        </StackLayout>
+                    <!--</OnPlatform.Android>
+                  <OnPlatform.iOS>
+                    <abstractions:SegmentedControl x:Name="SegControl" TintColor="#339152" SelectedSegment="-1"> 
+  <abstractions:SegmentedControl.Children >
+    <abstractions:SegmentedControlOption VerticalOptions="FillAndExpand" >
+      <abstractions:SegmentedControlOption.Text>
+      hola
+      como 
+      estas
+    </abstractions:SegmentedControlOption.Text>
+      </abstractions:SegmentedControlOption>
+    <abstractions:SegmentedControlOption Text="DC" />
+  <abstractions:SegmentedControlOption Text="kk" />
+  </abstractions:SegmentedControl.Children>
+</abstractions:SegmentedControl>
+                 </OnPlatform.iOS>
+                  </OnPlatform>-->
+                <!--</StackLayout>-->
+              </Grid.Children>
+             
+       
+                  
+            </Grid>
+          </ViewCell>
+        </TableSection>
+      </TableRoot>
+    </custom:CustomTableView  >
+    <!--Bottom Bar-->
+    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="20,0,20,5" Orientation="Horizontal" >
+      <Label Text="*" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Red"  FontSize="Small" />
+      <Label Text="Required fields" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small"  />
+    </StackLayout>
+    <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#D1D1D1"/>
+    <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="50" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Label Text="RESET" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding ResetCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End" TextColor="{Binding IsEnabled, Converter={StaticResource EnableConverter}}">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding NextCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

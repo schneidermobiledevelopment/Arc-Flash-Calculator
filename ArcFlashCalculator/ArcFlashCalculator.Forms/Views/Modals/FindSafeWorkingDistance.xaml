@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.FindSafeWorkingDistance"
+             Title="Find a Safe Working Distance">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CloseCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout Spacing="0">
+      <StackLayout Padding="20,10" BackgroundColor="#E6E6E6" >
+        <Label Text="Choose an appropiate Minimum Working Distance for the Personal Protective Equipment (PPE) you have available:" TextColor="Black" VerticalTextAlignment="Center"/>
+      </StackLayout>
+      <ListView VerticalOptions="FillAndExpand" ItemsSource="{Binding WorkingDistances}" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Padding="20,10">
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                  <Label Text="PPE Hazard/Risk Category Rating:" TextColor="Gray"/>
+                  <Label Text="{Binding Category}" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                  <Label Text="Maximum  Incident Energy:" TextColor="Gray"/>
+                  <Label Text="{Binding MaximumIncidentEnergy}" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                  <Label Text="Minimum Working Distance:" TextColor="Gray"/>
+                  <Label Text="{Binding MinimumWorkingDistance,StringFormat= '{0:N0} inches' }" TextColor="Black"/>
+                </StackLayout>
+                <Button Text="{Binding MinimumWorkingDistance,StringFormat='Use Working Distance @ {0:N0} inches'}" TextColor="White" BackgroundColor="{Binding BackgroundColor}" Command="{Binding Command}"/>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:customViews="clr-namespace:ArcFlashCalculator.Forms.CustomViews;assembly=ArcFlashCalculator.Forms"
+          x:Class="ArcFlashCalculator.Forms.Cells.HorizontalTextDangerWithLink">
+  <StackLayout Spacing="5" Padding="20,10">
+    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+      <Label Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+      <Label Text="{Binding Text}" TextColor="{Binding TextColor}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  VerticalOptions="Center" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,10">
+      <Image Source="Error.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
+      <Label TextColor="Red" HorizontalTextAlignment="Start" >
+        <Label.Text>
+          Do not proceed. Use the button to "Find a Safe Working Distance for Available PPE" or contact your supervisor for instructions.
+        </Label.Text>
+      </Label>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+      <Image Source="about.png" WidthRequest="20" HeightRequest="20"/>
+      <customViews:UnderlinedLabel Text="Protective Clothing Requirements >" TextColor="#43A0FD"/>
+      <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding Command}"/>
+      </StackLayout.GestureRecognizers>
+    </StackLayout>
+  </StackLayout>
+</ViewCell>

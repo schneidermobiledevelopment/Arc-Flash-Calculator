@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ArcFlashCalculator.Forms.CustomViews.RadioButton" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="0" Padding="2">
+  <ContentView.Content>
+    <!--<Grid x:Name="radio" BackgroundColor="Lime" Padding="0" Margin="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <Image Grid.Column="0" x:Name="img" Source="Unchecked.png" HeightRequest="20" WidthRequest="20"/>
+      <Label Grid.Column="1" x:Name="text" TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="Fill" VerticalOptions="Fill" LineBreakMode="WordWrap" BackgroundColor="Blue" Margin="0"/>
+    </Grid>-->
+    <StackLayout x:Name="radio" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0" Margin="0">
+    <Image x:Name="img" Source="Unchecked.png" HeightRequest="20" WidthRequest="20"/>
+    <Label x:Name="text" TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="Fill" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Margin="0"/>
+    </StackLayout>
+  </ContentView.Content>
+</ContentView>

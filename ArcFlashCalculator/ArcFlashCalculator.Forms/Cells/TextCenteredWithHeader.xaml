@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ArcFlashCalculator.Forms.Cells.TextCenteredWithHeader">
+<StackLayout Padding="0,0,0,10">
+  <StackLayout Orientation="Horizontal" BackgroundColor="#E47F00" Padding="0,5">
+    <Image Source="Warning.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="EndAndExpand"/>
+    <Label Text="ARC FLASH HAZARD PRESENT" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" TextColor="Black"/>
+  </StackLayout>
+  <StackLayout Orientation="Horizontal">
+    <Image Source="Error.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="EndAndExpand" IsVisible="{Binding HasError}"/>
+    <Label Text="{Binding Title}" TextColor="{Binding TitleColor}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="{Binding Aligment}" VerticalOptions="Center"/>
+  </StackLayout>
+  <Label Text="{Binding Text}" FontAttributes="Bold" TextColor="{Binding TextColor}" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+</StackLayout>
+</ViewCell>

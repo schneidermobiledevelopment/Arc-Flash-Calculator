@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  xmlns:local="clr-namespace:ArcFlashCalculator.Forms.Views"
+                  x:Class="ArcFlashCalculator.Forms.Views.MasterPage">
+  <MasterDetailPage.Master>
+    <ContentPage Title="Menu" Icon="Hamburger.png">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="35*" />
+          <RowDefinition Height="45*" />
+          <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <ContentView BackgroundColor="#3DCD58">
+          <Image Source="MasterHeader.png" BackgroundColor="#3DCD58" Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit" Margin="15" />
+        </ContentView>
+        <!--<Label Text="Arc Flash Calculator" FontAttributes="Bold"  Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"   FontSize="Medium"   TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+          <Label Text="3.0" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" FontSize="Micro" TextColor="White" VerticalTextAlignment="End" />-->
+        <!--</Grid>-->
+        <ListView x:Name="menuList" Grid.Row="1" ItemsSource="{Binding Menu}"  SelectedItem="{Binding SelectedMenu}" SeparatorVisibility="None" >
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <StackLayout Padding="15, 5, 15, 5" Orientation="Horizontal" Spacing="15">
+                  <Image Source="{Binding icon}" HorizontalOptions="Center" HeightRequest="23" WidthRequest="23"/>
+                  <Label Text="{Binding Title}" VerticalOptions="Center" TextColor="Black"  FontSize="Medium"/>
+                </StackLayout>
+              </ViewCell>
+              <!--<ImageCell Text="{Binding Title}" ImageSource="{Binding icon}"  />-->
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <Image Source="MasterFooter.png" Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Aspect="AspectFit" Margin="25" />
+      </Grid>
+    </ContentPage>
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Detail>
+    <local:CommonInput />
+  </MasterDetailPage.Detail>
+</MasterDetailPage>

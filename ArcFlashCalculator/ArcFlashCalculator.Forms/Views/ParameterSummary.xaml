@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.ParameterSummary"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             NavigationPage.BackButtonTitle="Back"
+                          Title="Arc Flash Calculator">
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+    <custom:TitleBar/>
+      <custom:CustomTableView Intent="Form" HasUnevenRows="true" VerticalOptions="Start">
+        <custom:CustomTableView.HeightRequest>
+          <OnIdiom x:TypeArguments="x:Double" Phone="45" Tablet="55"/>
+        </custom:CustomTableView.HeightRequest>
+      <TableRoot>
+        <TableSection Title="Parameter Confirmation">
+        </TableSection>
+      </TableRoot>
+    </custom:CustomTableView>
+    <ListView x:Name="listView" ItemsSource="{Binding Summary}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="true" >
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid HorizontalOptions="Fill" RowSpacing="0">
+                  <!--<Grid.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double"
+       Android="80" iOS="100"/>
+                  </Grid.HeightRequest>-->
+                  <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+        Android="20,0" iOS="20,5"/>
+              </Grid.Padding>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="87*"/>
+                    <ColumnDefinition Width="13*"/>
+                  </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Grid.Row="0" Text="{Binding Title}" HorizontalOptions="Start" FontSize="12" VerticalTextAlignment="Center" VerticalOptions="Center" />
+                  <Label Grid.Column="0" Grid.Row="1" Text="{Binding Description}" HorizontalOptions="Start" TextColor="Black" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                  <Image Source="Edit.png" HeightRequest="35" WidthRequest="35" Grid.RowSpan="2" Grid.Column="1" Grid.Row="0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image.GestureRecognizers>
+                      <TapGestureRecognizer Command="{Binding EditCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                  </Image>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+          <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="60" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <!--<Label Text="BACK" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding BackCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>-->
+      <Label Text="CALCULATE" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#3DCD58">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding NextCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

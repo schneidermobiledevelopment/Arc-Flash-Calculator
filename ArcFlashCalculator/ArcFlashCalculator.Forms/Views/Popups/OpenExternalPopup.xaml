@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.OpenExternalPopup">
+  <StackLayout BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="321" Spacing="0" >
+    <Label Text="Open External Link?" TextColor="White" BackgroundColor="#3DCD58" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="Large" HeightRequest="60"/>
+    <Image Source="OpenBlack.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45" WidthRequest="45" Margin="0,20,0,5" />
+    <Label FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black" Margin="10,10">
+      <Label.Text>
+        This link will open in your mobile browser app, and you leave the Arc Flash Calculator.
+      </Label.Text>
+    </Label>
+    <Label FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black" Margin="10,10">
+      <Label.Text>
+        After determining your trip curve, return to the Arc Flash Calculator to complete the process.
+      </Label.Text>
+    </Label>
+    <Label Text="Please confirm." FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black" Margin="10,0,10,20"/>
+    <BoxView HeightRequest="1" BackgroundColor="#D1D1D1" />
+    <StackLayout Orientation="Horizontal" Spacing="0" HeightRequest="50">
+      <Label Text="Cancel" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" WidthRequest="160">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding CancelCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+      <BoxView BackgroundColor="#D1D1D1" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="1"/>
+      <Label Text="OK" FontSize="Large" FontAttributes="Bold" TextColor="#3DCD58" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" WidthRequest="160">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding OkCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+</pages:PopupPage>

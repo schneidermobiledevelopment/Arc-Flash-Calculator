@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArcFlashCalculator.Forms.Styles">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="primary">#3DCD58</Color>
+      <Color x:Key="primaryDark">#009530</Color>
+      <Color x:Key="accent">#339152</Color>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+</ContentPage>

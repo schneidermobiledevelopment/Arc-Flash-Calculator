@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        xmlns:converters="clr-namespace:ArcFlashCalculator.Forms.Converters"
+                        x:Class="ArcFlashCalculator.Forms.App">
+  <prism:PrismApplication.Resources>
+    <ResourceDictionary>
+      <!-- Converters -->
+      <converters:DecimalConverter x:Key="DecimalConverter" />
+      <converters:IntConverter x:Key="IntConverter" />
+      <converters:BooleanConverter x:Key="BooleanConverter"/>
+      <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+      <!--<converters:EquipmentTypeConverter x:Key="EquipmentTypeConverter"/>
+      <converters:EquipmentTypeItemsConverter x:Key="EquipmentTypeItemsConverter"/>
+      <converters:ManufacterConverter x:Key="ManufacterConverter"/>
+      <converters:ManufacterItemsConverter x:Key="ManufacterItemsConverter"/>
+      <converters:BreakerStyleConverter x:Key="BreakerStyleConverter"/>
+      <converters:BreakerStyleItemsConverter x:Key="BreakerStyleItemsConverter"/>-->
+      <converters:PickerConverter x:Key="PickerConverter"/>
+      <converters:PickerItemsConverter x:Key="PickerItemsConverter"/>
+      <!--<converters:TripUnitConverter x:Key="TripUnitConverter"/>
+      <converters:TripUnitItemsConverter x:Key="TripUnitItemsConverter"/>
+      <converters:ConductorSizeConverter x:Key="ConductorSizeConverter"/>
+      <converters:ConductorSizeItemsConverter x:Key="ConductorSizeItemsConverter"/>-->
+      <converters:NullToZeroConverter x:Key="NullToZeroConverter"/>
+      <converters:EnableConverter x:Key="EnableConverter"/>
+      <converters:BoolToGridLengthConverter x:Key="BoolToGridLengthConverter"/>
+    </ResourceDictionary>
+  </prism:PrismApplication.Resources>
+</prism:PrismApplication>

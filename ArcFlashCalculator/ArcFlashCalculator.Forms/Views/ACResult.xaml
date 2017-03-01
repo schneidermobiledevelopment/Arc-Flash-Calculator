@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customViews="clr-namespace:ArcFlashCalculator.Forms.CustomViews;assembly=ArcFlashCalculator.Forms"
+             xmlns:CellTemplates="clr-namespace:ArcFlashCalculator.Forms.Cells;assembly=ArcFlashCalculator.Forms"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.ACResult"
+             Title="Arc Flash Calculator">
+ <ContentPage.Resources>
+   <ResourceDictionary>
+      <CellTemplates:TemplateSelector x:Key="MyTemplateSelector"/>
+    </ResourceDictionary>
+ </ContentPage.Resources>
+<ContentPage.ToolbarItems>
+  <ToolbarItem Text="Export Results"  Command="{Binding ExportCommand}" Icon="Export.png"/>
+</ContentPage.ToolbarItems>
+   <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+    <customViews:TitleBar/>
+    <!--Header-->
+    <customViews:CustomTableView Intent="Form" HasUnevenRows="true" VerticalOptions="Start" HeightRequest="45">
+      <TableRoot>
+        <TableSection Title="Arc Flash Estimate Report"/>
+      </TableRoot>
+    </customViews:CustomTableView>
+     <customViews:CarouselIndicators IndicatorHeight="8" IndicatorWidth="8" UnselectedIndicator="UnselectedItem.png" SelectedIndicator="SelectedItem.png" Position="{Binding Position}" ItemsSource="{Binding Result}" BackgroundColor="#E6E6E6" Margin="0,-1,0,0" Padding="0,5"/>
+     <cv:CarouselView ItemsSource="{Binding Result}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Position="{Binding Position, Mode=TwoWay}">
+       <cv:CarouselView.ItemTemplate>
+         <DataTemplate>
+        <StackLayout VerticalOptions="CenterAndExpand" Spacing="0" >
+           <ListView ItemTemplate="{StaticResource MyTemplateSelector}"  ItemsSource="{Binding ViewItem}" HasUnevenRows="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        </StackLayout>
+         </DataTemplate>
+           </cv:CarouselView.ItemTemplate>
+       
+       </cv:CarouselView>
+    <!--Bottom Bar-->
+     <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#D1D1D1"/>
+     <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="60" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <!--<Label Text="BACK" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding BackCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>-->
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

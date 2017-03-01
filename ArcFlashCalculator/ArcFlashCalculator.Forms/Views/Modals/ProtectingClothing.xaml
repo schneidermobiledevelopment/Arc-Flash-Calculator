@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.ProtectingClothing"
+             Title="Protective Clothing">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="CenteredLabel" TargetType="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="TextColor" Value="Black"/>
+      </Style>
+      <Style x:Key="LeftLabel" TargetType="Label">
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="TextColor" Value="Black"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CloseCommand}"/>
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand" Spacing="5" Margin="20">
+    <Label TextColor="Black" Text="Personal Protective Equipment (PPE) Clothing Characteristics:"/>
+      <!--TO-DO Hazard Table and check if we have hazard Category 1-->
+      
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

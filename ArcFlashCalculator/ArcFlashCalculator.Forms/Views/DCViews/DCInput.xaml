@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             x:Class="ArcFlashCalculator.Forms.Views.DCInput"
+             NavigationPage.BackButtonTitle="Back"
+             Title="Arc Flash Calculator">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Technical Help" Icon="Help.png" Command="{Binding HelpCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+  <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0" >
+    <custom:TitleBar/>
+    <custom:CustomTableView Intent="Form" VerticalOptions="Fill" HasUnevenRows="true">
+      <TableRoot>
+        <TableSection Title="Working Conditions">
+          <!--Maximum Available Short Circuit-->
+          <custom:CustomEntryCell x:Name="maximumShortCircuitAvailable"   EntryText="{Binding CalculationInput.MaximumShortCircuitAvailable, Converter={StaticResource IntConverter}}" LabelText="Maximum Avilable Short Circuit (amps)" IsRequired="true" Keyboard="Numeric" EntryPlaceholder="Example: 1000" ErrorText="{Binding MaximumShortCircuitAvailableErrorMessage}">
+            <custom:CustomEntryCell.WidthC1><OnPlatform x:TypeArguments="GridLength" Android="50*" iOS="65*"/></custom:CustomEntryCell.WidthC1>
+            <custom:CustomEntryCell.WidthC2><OnPlatform x:TypeArguments="GridLength" Android="50*" iOS="35*"/></custom:CustomEntryCell.WidthC2>
+          </custom:CustomEntryCell>
+          <!--Battery Enclosure-->
+          <ViewCell>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="60*" />
+              </Grid.ColumnDefinitions>
+              <custom:LabelRequired Grid.Column="0" Text="Battery Enclosure?" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+              <StackLayout Grid.Column="1" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="8">
+                <custom:RadioButton Text="Open Air" HorizontalOptions="EndAndExpand" Checked="{Binding CalculationInput.InCabinet , Mode=TwoWay, Converter={StaticResource InverseBooleanConverter}}"/>
+                <custom:RadioButton Text="In Box" HorizontalOptions="End" Checked="{Binding CalculationInput.InCabinet , Mode=TwoWay, Converter={StaticResource BooleanConverter}}" />
+              </StackLayout>
+            </Grid>
+          </ViewCell>
+          <!--Battery String Voltage-->
+          <custom:CustomEntryCell x:Name="VoltageOfBattery" WidthC1="50*" WidthC2="50*" EntryText="{Binding CalculationInput.VoltageOfBattery, Converter={StaticResource IntConverter}}" LabelText="Battery String Voltage (volts)" IsRequired="true" EntryPlaceholder="Example: 240" Keyboard="Numeric" ErrorText="{Binding VoltageOfBatteryErrorMessage}"/>
+        </TableSection>
+      </TableRoot>
+    </custom:CustomTableView >
+    <!--Bottom Bar-->
+    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="20,0,20,5" Orientation="Horizontal" >
+      <Label Text="*" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Red"  FontSize="Small" />
+      <Label Text="Required fields" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small"  />
+    </StackLayout>
+     <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#D1D1D1"/>
+    <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="50" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="StartAndExpand" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Image Source="Error.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" IsVisible="{Binding HasErrors}" ></Image>
+      <Label Text="RESET" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding ResetCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End"  TextColor="{Binding IsEnabled, Converter={StaticResource EnableConverter}}">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding NextCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

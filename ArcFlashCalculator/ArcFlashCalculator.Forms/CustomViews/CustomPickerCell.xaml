@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell x:Name="Control"  xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+          xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews" 
+          x:Class="ArcFlashCalculator.Forms.CustomViews.CustomPickerCell">
+  <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+    <Grid.Padding>
+      <OnPlatform x:TypeArguments="Thickness"
+        Android="20,0" iOS="20,10"/>
+    </Grid.Padding>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="50*" />
+      <ColumnDefinition Width="50*" />
+    </Grid.ColumnDefinitions>
+    <custom:LabelRequired x:Name="lbl" Grid.Column="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Start"/>
+    <custom:BindablePicker x:Name="picker" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" ItemsSource="{Binding ItemsSource, Source={Reference Control}}"  SelectedItem="{Binding SelectedItem, Source={Reference Control}}" />
+  </Grid> 
+</ViewCell>

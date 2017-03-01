@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             Title="Arc Flash Calculator"
+             NavigationPage.BackButtonTitle="Back"
+             x:Class="ArcFlashCalculator.Forms.Views.ACInputTwo">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Technical Help" Icon="Help.png" Command="{Binding HelpCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0" >
+    <custom:TitleBar/>
+    <custom:CustomTableView Intent="Form" VerticalOptions="Fill" HasUnevenRows="true"  >
+      <TableRoot>
+        <TableSection Title="Working Conditions">
+          <!--Equipment Enclosure-->
+          <ViewCell>
+            <StackLayout Padding="20,5" Spacing="0">
+              <custom:LabelRequired Text="Equipment Enclosure?" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+              <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
+                <custom:RadioButton Text="Open Air" HorizontalOptions="EndAndExpand" Checked="{Binding CalculationInput.IsOpenAir , Mode=TwoWay, Converter={StaticResource BooleanConverter}}" />
+                <custom:RadioButton Text="In Box" HorizontalOptions="End" Checked="{Binding CalculationInput.IsOpenAir , Mode=TwoWay, Converter={StaticResource InverseBooleanConverter}}" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+          <!--Transformer-->
+          <ViewCell>
+            <StackLayout Padding="20,5" Spacing="2">
+              <custom:LabelRequired Text="Transformer?" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+              <StackLayout Orientation="Horizontal" Spacing="20" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+              <custom:RadioButton Text="Upstream XFMR" HorizontalOptions="EndAndExpand" Checked="{Binding CalculationInput.HasTransformer , Mode=TwoWay, Converter={StaticResource BooleanConverter}}"/>
+              <custom:RadioButton Text="No Transformer" HorizontalOptions="EndAndExpand" Checked="{Binding CalculationInput.HasTransformer , Mode=TwoWay, Converter={StaticResource InverseBooleanConverter}}" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+          <!--Conductor-->
+          <ViewCell>
+            <StackLayout Padding="20,5" Spacing="0">
+              <custom:LabelRequired Text="Conductor?" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+              <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
+                <custom:RadioButton Text="Cable" HorizontalOptions="EndAndExpand" Checked="{Binding CalculationInput.HasCable , Mode=TwoWay, Converter={StaticResource BooleanConverter}}" />
+                <custom:RadioButton Text="No Cable - Bus Only" HorizontalOptions="End" Checked="{Binding CalculationInput.HasCable , Mode=TwoWay, Converter={StaticResource InverseBooleanConverter}}" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+        </TableSection>
+      </TableRoot>
+    </custom:CustomTableView >
+    <!--Bottom Bar-->
+    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="20,0,20,5" Orientation="Horizontal" >
+      <Label Text="*" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Red"  FontSize="Small" />
+      <Label Text="Required fields" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small"  />
+    </StackLayout>
+    <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="50" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="StartAndExpand" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Image Source="Error.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" IsVisible="{Binding HasErrors}" ></Image>
+      <Label Text="RESET" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding ResetCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End"  TextColor="{Binding IsEnabled, Converter={StaticResource EnableConverter}}">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding NextCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

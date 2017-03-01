@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             x:Class="ArcFlashCalculator.Forms.Views.ACHasCable"
+                          Title="Arc Flash Calculator"
+             NavigationPage.BackButtonTitle="Back">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Technical Help" Icon="Help.png" Command="{Binding HelpCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0" >
+    <custom:TitleBar/>
+    <custom:CustomTableView Intent="Form" VerticalOptions="Fill" HasUnevenRows="true" >
+      <TableRoot>
+        <TableSection Title="Working Conditions">
+          <!--Conductor Size-->
+          <!--<ViewCell>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+              </Grid.ColumnDefinitions>
+              <custom:LabelRequired Grid.Column="0" Text="Conductor Size" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+              <custom:BindablePicker Title="Choose One..." Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" ItemsSource="{Binding ConductorSizes,Converter={StaticResource ConductorSizeItemsConverter}}" SelectedItem="{Binding CalculationInput.ConductorSize, Mode=TwoWay, Converter={StaticResource ConductorSizeConverter}}" >
+              </custom:BindablePicker>
+            </Grid>
+          </ViewCell>-->
+          <custom:CustomPickerCell LabelText="Conductor Size" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding ConductorSizes, Converter={StaticResource PickerItemsConverter}, ConverterParameter=ConductorSize}" SelectedItem="{Binding CalculationInput.ConductorSize, Converter={StaticResource PickerConverter}, ConverterParameter=ConductorSize}" />
+          <!--# Conductors per Phase -->
+          <custom:CustomEntryCell x:Name="conductorPerPhase"  LabelText="# Conductors per Phase" EntryText="{Binding CalculationInput.ConductorPerPhase, Converter={StaticResource IntConverter}}" WidthC1="60*" WidthC2="40*" IsRequired="true" Keyboard="Numeric" EntryPlaceholder="Example: 12" ErrorText="{Binding ConductorPerPhaseErrorMessage}"/>
+          <!--Conductor Length -->
+          <custom:CustomEntryCell x:Name="conductorLength" LabelText="Conductor Length" EntryText="{Binding CalculationInput.ConductorLength, Converter={StaticResource IntConverter}}" WidthC1="60*" WidthC2="40*" IsRequired="true" Keyboard="Numeric" EntryPlaceholder="Example: 200" ErrorText="{Binding ConductorLengthErrorMessage}"/>
+        </TableSection>
+      </TableRoot>
+    </custom:CustomTableView >
+    <!--Bottom Bar-->
+    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="20,0,20,5" Orientation="Horizontal" >
+      <Label Text="*" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Red"  FontSize="Small" />
+      <Label Text="Required fields" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small"  />
+    </StackLayout>
+    <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="50" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="StartAndExpand" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Image Source="Error.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" IsVisible="{Binding HasErrors}" ></Image>
+      <Label Text="RESET" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding ResetCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End"  TextColor="{Binding IsEnabled, Converter={StaticResource EnableConverter}}">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding NextCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

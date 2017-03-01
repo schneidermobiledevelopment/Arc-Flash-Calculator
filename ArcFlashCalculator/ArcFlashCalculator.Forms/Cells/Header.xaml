@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ArcFlashCalculator.Forms.Cells.Header">
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="#E6E6E6" Margin="0,2,0,0">
+    <StackLayout.HeightRequest>
+      <OnIdiom x:TypeArguments="x:Double" Phone="45" Tablet="55"/>
+    </StackLayout.HeightRequest>
+    <Label Text="{Binding Title}" TextColor="#339152" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" >
+      <Label.VerticalTextAlignment>
+        <OnPlatform x:TypeArguments="TextAlignment" iOS="End" Android="Center"/>
+      </Label.VerticalTextAlignment>
+      <Label.FontAttributes>
+        <OnPlatform x:TypeArguments="FontAttributes" iOS="Bold" Android="None"/>
+      </Label.FontAttributes>
+      <Label.FontSize>
+        <OnPlatform x:TypeArguments="x:Double" Android="16">
+          <OnPlatform.iOS>
+            <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="18"/>
+          </OnPlatform.iOS>
+        </OnPlatform>
+      </Label.FontSize>
+      <Label.Margin>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,10"/>
+      </Label.Margin>
+    </Label>
+  </StackLayout>
+</ViewCell>

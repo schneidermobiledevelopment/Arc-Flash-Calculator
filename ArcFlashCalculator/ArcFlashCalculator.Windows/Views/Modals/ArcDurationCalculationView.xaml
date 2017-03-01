@@ -1,0 +1,182 @@
+﻿<UserControl x:Class="ArcFlashCalculator.WPF.Views.Modals.ArcDurationCalculationView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:wpf="clr-namespace:ArcFlashCalculator.WPF"
+      xmlns:prism="http://prismlibrary.com/"
+      prism:ViewModelLocator.AutoWireViewModel="True"  
+      xmlns:localString="clr-namespace:ArcFlashCalculator.Core.Locals;assembly=ArcFlashCalculator.Core"
+      mc:Ignorable="d" 
+      d:DesignHeight="420" d:DesignWidth="690">
+<UserControl.Resources>
+    <Style x:Key="FocusTextBox" TargetType="Grid">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding ElementName=SensorRatingTextBox, Path=IsVisible}" Value="True">
+          <Setter Property="FocusManager.FocusedElement" Value="{Binding ElementName=SensorRatingTextBox}"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <ControlTemplate x:Key="ErrorTemplate">
+      <Grid>
+        <AdornedElementPlaceholder x:Name="ErrorImage" Visibility="Collapsed">
+          <Image Source="../../Images/error.png" 
+			ToolTip="{Binding Path=(Validation.Errors)[0].ErrorContent}"
+			HorizontalAlignment="Right"
+			Margin="0,0,-20,0"
+			Width="16"
+			Height="16"/>
+        </AdornedElementPlaceholder>
+      </Grid>
+      <ControlTemplate.Triggers>
+        <DataTrigger Binding="{Binding ElementName=ErrorImage,Path=AdornedElement.IsEnabled}" Value="true">
+          <Setter TargetName="ErrorImage" Property="Visibility" Value="Visible" />
+        </DataTrigger>
+      </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="TextBox">
+      <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ErrorTemplate}"></Setter>
+      <Setter Property="Height" Value="25"></Setter>
+      <Style.Triggers>
+        <Trigger Property="Validation.HasError" Value="True">
+          <Setter Property="BorderBrush" Value="Red"></Setter>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="GreenButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="Foreground" Value="#FF676767" />
+      <Setter Property="Margin" Value="10, 5" />
+      <Setter Property="Height" Value="25" />
+      <Setter Property="Width" Value="50" />
+      <Style.Triggers>
+        <Trigger Property="IsEnabled" Value="True">
+          <Setter Property="Background" Value="Green"></Setter>
+          <Setter Property="Foreground" Value="White"></Setter>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="ErrorMessageTextBlockStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="Foreground" Value="Red"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="FieldTextBlockStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="HorizontalAlignment" Value="Right"/>
+      <Setter Property="Margin" Value="10,5"/>
+    </Style>
+    <Style x:Key="AsterixStyle" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="Red"/>
+      <Setter Property="HorizontalAlignment" Value="Right"/>
+      <Setter Property="Margin" Value="0,2,5,0"/>
+    </Style>
+  </UserControl.Resources>
+  <Grid >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition></ColumnDefinition>
+      <ColumnDefinition></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+
+    <Rectangle Fill="#FF3DCD58" Grid.Row="0" Grid.ColumnSpan="2"></Rectangle>
+    <TextBlock  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Arc Duration Calculation" VerticalAlignment="Center" FontSize="22" Foreground="White" Margin="10"/>
+
+    <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="10" Background="Transparent" Width="25" BorderBrush="Transparent" Command="{Binding CanceModalCommand}">
+      <TextBlock Text="{x:Static localString:AppResources.X}" VerticalAlignment="Center" FontSize="22" Foreground="White" ToolTip="Click to close"/>
+    </Button>
+    <Rectangle Fill="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3"></Rectangle>
+    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+      <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Foreground="Gray" Margin="10">
+          Please provide values for all required fields.
+      </TextBlock>
+      
+    </StackPanel>
+    <!--Arc Duration Calculation -->
+    <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Background="White" Style="{StaticResource FocusTextBox}">
+      <Grid.RowDefinitions>
+        <wpf:RowDefinitionExtended Height="25" />
+        <wpf:RowDefinitionExtended Height="25" />
+        <wpf:RowDefinitionExtended Height="25" />
+        <wpf:RowDefinitionExtended Height="25" />
+        <wpf:RowDefinitionExtended Height="25" />
+        <wpf:RowDefinitionExtended Height="25" Visible="{Binding TripUnitTypeSelected}"/>
+        <wpf:RowDefinitionExtended Height="25" Visible="{Binding TripUnitTypeSelected}"/>
+        <wpf:RowDefinitionExtended Height="25" Visible="{Binding TripUnitTypeSelected}"/>
+        <wpf:RowDefinitionExtended Height="25" Visible="{Binding TripUnitTypeSelected}"/>
+        <wpf:RowDefinitionExtended Height="25" Visible="{Binding TripUnitTypeSelected}"/>
+        <wpf:RowDefinitionExtended Height="30" Visible="{Binding TripUnitTypeSelected}"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="220"/>
+        <ColumnDefinition Width="250"/>
+        <ColumnDefinition Width="20"/>
+        <ColumnDefinition Width="200*"/>
+      </Grid.ColumnDefinitions>
+      <!--0 row Sensor Rating Pickup -->
+      <TextBlock Grid.Row="0" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="SensorRatingTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Sensor_Rating}"  />
+      <TextBlock Grid.Row="0" Grid.Column="0" x:Name="SensorRatingTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <TextBox Grid.Row="0" Grid.Column="1" x:Name="SensorRatingTextBox" Text="{Binding CalculationInput.SensorRating, Delay=500}"/>
+      <TextBlock Style="{StaticResource ErrorMessageTextBlockStyle}" Grid.Row="0" Grid.Column="3" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=SensorRatingTextBox}" />
+
+      <!--1 row MultipleOfSensorRating -->
+      <TextBlock Grid.Row="1" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="MultipleOfSensorRatingTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Multiple_Of_Sensor_Rating}"  />
+      <TextBlock Grid.Row="1" Grid.Column="0" x:Name="MultipleOfSensorRatingTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CalculationOutput.MultipleOfSensorRating}" IsEnabled="False" x:Name="MultipleOfSensorRatingComboBox" />
+
+      <!--2 row Manufacturer -->
+      <TextBlock Grid.Row="2" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="ConductorSizeTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Manufacturer}"  />
+      <TextBlock Grid.Row="2" Grid.Column="0" x:Name="ConductorSizeTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ManufacturersComboBox" ItemsSource="{Binding Manufacturers.Items}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding Manufacturers.SelectedItem, UpdateSourceTrigger=PropertyChanged}"/>
+
+      <!--3 row Breaker Styles -->
+      <TextBlock Grid.Row="3" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="BreakerStyleTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Breaker_Style}"  />
+      <TextBlock Grid.Row="3" Grid.Column="0" x:Name="BreakerStyleTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <ComboBox Grid.Row="3" Grid.Column="1" x:Name="BreakerStylesComboBox" ItemsSource="{Binding BreakerStyles.Items}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding BreakerStyles.SelectedItem, UpdateSourceTrigger=PropertyChanged}"/>
+
+      <!--4 row Trip UnitTypes -->
+      <TextBlock Grid.Row="4" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="TripUnitTypesTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Trip_Unit_Type}"  />
+      <TextBlock Grid.Row="4" Grid.Column="0" x:Name="TripUnitTypesTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <ComboBox Grid.Row="4" Grid.Column="1" x:Name="TripUnitTypesComboBox" ItemsSource="{Binding TripUnitTypes.Items}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding TripUnitTypes.SelectedItem, UpdateSourceTrigger=PropertyChanged}"/>
+
+      <!--5 row LongTime Pickup -->
+      <TextBlock Grid.Row="5" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="LongTimePickupTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Long_Time_Pickup}"  />
+      <TextBlock Grid.Row="5" Grid.Column="0" x:Name="LongTimePickupTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <TextBox Grid.Row="5" Grid.Column="1" x:Name="LongTimePickupTextBox" Text="{Binding CalculationInput.ArcDuration.LongTimePickup}"/>
+      <TextBlock Grid.Row="5" Grid.Column="3" Style="{StaticResource ErrorMessageTextBlockStyle}" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=LongTimePickupTextBox}" />
+
+      <!--6 row LongTimeDelay -->
+      <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource FieldTextBlockStyle}" x:Name="LongTimeDelayTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Long_Time_Delay}"  />
+      <TextBlock Grid.Row="6" Grid.Column="0" x:Name="LongTimeDelayTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <ComboBox Grid.Row="6" Grid.Column="1" x:Name="LongTimeDelayComboBox" ItemsSource="{Binding LongTimeDelays.Items}" DisplayMemberPath="Value" SelectedValuePath="Id" SelectedItem="{Binding CalculationInput.ArcDuration.LongTimeDelay, UpdateSourceTrigger=PropertyChanged}"/>
+
+      <!--7 row ShortTimePickup -->
+      <TextBlock Grid.Row="7" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="ShortTimePickupTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Short_Time_Pickup}"  />
+      <TextBlock Grid.Row="7" Grid.Column="0" x:Name="ShortTimePickupTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <ComboBox Grid.Row="7" Grid.Column="1" x:Name="ShortTimePickupComboBox" ItemsSource="{Binding ShortTimePickups.Items}" DisplayMemberPath="Value" SelectedValuePath="Id" SelectedItem="{Binding CalculationInput.ArcDuration.ShortTimePickup, UpdateSourceTrigger=PropertyChanged}"/>
+
+      <!--8 row ShortTimeDelay -->
+      <TextBlock Grid.Row="8" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="ShortTimeDelayTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Short_Time_Delay}"  />
+      <TextBlock Grid.Row="8" Grid.Column="0" x:Name="ShortTimeDelayTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <ComboBox Grid.Row="8" Grid.Column="1" x:Name="ShortTimeDelayComboBox" ItemsSource="{Binding ShortTimeDelays.Items}" DisplayMemberPath="Value" SelectedValuePath="Id" SelectedItem="{Binding CalculationInput.ArcDuration.ShortTimeDelay, UpdateSourceTrigger=PropertyChanged}"/>
+
+      <!--9 row Instantaneous -->
+      <TextBlock Grid.Row="9" Style="{StaticResource FieldTextBlockStyle}" Grid.Column="0" x:Name="InstantaneousTextBlock" TextAlignment="Right" Text="{x:Static localString:AppResources.Instantaneous}"  />
+      <TextBlock Grid.Row="9" Grid.Column="0" x:Name="InstantaneousTextBlockStar" Style="{StaticResource AsterixStyle}" Text="{x:Static localString:AppResources.Star}" />
+      <ComboBox Grid.Row="9" Grid.Column="1" x:Name="InstantaneousComboBox" ItemsSource="{Binding Instantaneous.Items}" DisplayMemberPath="Value" SelectedValuePath="Id" SelectedItem="{Binding CalculationInput.ArcDuration.Instantaneous, UpdateSourceTrigger=PropertyChanged}"/>
+
+      <!--10 row ArcDuration -->
+      <TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Style="{StaticResource FieldTextBlockStyle}" x:Name="ArcDurationComboBox" FontSize="18"
+                 Text="{Binding CalculationInput.ArcDurationValue, Delay=500, StringFormat={x:Static localString:AppResources.Calculated_Arc_Duration}}" Validation.ErrorTemplate="{x:Null}" />
+    </Grid>
+    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right">
+      <Button HorizontalAlignment="Right" Content="{x:Static localString:AppResources.Cancel}" Command="{Binding CanceModalCommand}" Margin="5" Width="Auto"></Button>
+      <Button HorizontalAlignment="Right" Content="Ok" Style="{StaticResource GreenButtonStyle}" Command="{Binding NextCommand}" Margin="5" Width="Auto"></Button>
+    </StackPanel>
+  </Grid>
+</UserControl>

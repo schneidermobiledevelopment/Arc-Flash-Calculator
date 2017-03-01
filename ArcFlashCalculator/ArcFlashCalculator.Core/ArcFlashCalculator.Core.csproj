@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{CA21D78D-664C-4443-ABC6-D243C3FC8193}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ArcFlashCalculator.Core</RootNamespace>
+    <AssemblyName>ArcFlashCalculator.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ArcDurationValidator.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Events\CalculateButtonClicked.cs" />
+    <Compile Include="Events\CalculationInputReady.cs" />
+    <Compile Include="Events\ArcDurationUpdated.cs" />
+    <Compile Include="Events\CalculationOutputUpdated.cs" />
+    <Compile Include="Events\CalculationInputUpdated.cs" />
+    <Compile Include="CalculationInputValidator.cs" />
+    <Compile Include="Events\OpenModalEvent.cs" />
+    <Compile Include="Events\CloseModalEvent.cs" />
+    <Compile Include="Events\CalculationOutputSaved.cs" />
+    <Compile Include="Events\UseForNewCalculationClicked.cs" />
+    <Compile Include="FluentValidator.cs" />
+    <Compile Include="Interfaces\IArcDuration.cs" />
+    <Compile Include="Interfaces\ICalculationOutput.cs" />
+    <Compile Include="Interfaces\ICalculatorService.cs" />
+    <Compile Include="Interfaces\ICalculationInput.cs" />
+    <Compile Include="Interfaces\IDataService.cs" />
+    <Compile Include="Interfaces\IPdfCreatorService.cs" />
+    <Compile Include="Interfaces\ISaveAndLoad.cs" />
+    <Compile Include="Interfaces\IShowingAndHidingService.cs" />
+    <Compile Include="IValidator.cs" />
+    <Compile Include="Locals\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Locals\AppResources.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Locals\AppResources.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.fr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ArcDuration.cs" />
+    <Compile Include="Model\ArcLocation.cs" />
+    <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\CalculationInput.cs" />
+    <Compile Include="Model\CalculationInputSimple.cs" />
+    <Compile Include="Model\CalculationOutput.cs" />
+    <Compile Include="Model\BreakerStyle.cs" />
+    <Compile Include="Model\Equipment.cs" />
+    <Compile Include="Model\Instantaneous.cs" />
+    <Compile Include="Model\LongTimeDelay.cs" />
+    <Compile Include="Model\Manufacturer.cs" />
+    <Compile Include="Model\ProtectiveEquipment.cs" />
+    <Compile Include="Model\ConductorSize.cs" />
+    <Compile Include="Model\EquipmentType.cs" />
+    <Compile Include="Model\GroundingType.cs" />
+    <Compile Include="Model\ShortTimeDelay.cs" />
+    <Compile Include="Model\ShortTimePickup.cs" />
+    <Compile Include="Model\TripUnitType.cs" />
+    <Compile Include="Model\UnitOfMeasure.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\VisibilityModel.cs" />
+    <Compile Include="Model\WorkingDistance.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CalculatorService.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\PdfCreatorService.cs" />
+    <Compile Include="Services\ShowingAndHidingSevice.cs" />
+    <Compile Include="ValidatableBindableBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Core.6.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xfinium.Pdf.Pcl, Version=6.6.0.16, Culture=neutral, PublicKeyToken=3a083ecebc95eb1c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xfinium.Pdf.Pcl.6.6.0.16\lib\portable-net45+netcore45+wpa81+wp8\Xfinium.Pdf.Pcl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\pdf_explosion.png" />
+    <EmbeddedResource Include="Images\pdf_logo.png" />
+    <EmbeddedResource Include="Images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Locals\AppResources.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Locals\AppResources.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Locals\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\dc_source.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\work_point.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\xfmr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\cable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\ac_source.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\breaker.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

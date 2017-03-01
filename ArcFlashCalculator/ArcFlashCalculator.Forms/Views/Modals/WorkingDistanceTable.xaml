@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.WorkingDistanceTable"
+             Title="Standard Working Distance">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="WorkingDistanceValue" TargetType="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/> 
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="TextColor" Value="Black"/>
+      </Style>
+    <Style x:Key="EquipmentTypeValue" TargetType="Label">
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/> 
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="TextColor" Value="Black"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CloseCommand}"/>
+  </ContentPage.ToolbarItems>
+  <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand" Spacing="0" Margin="20">
+    <Grid BackgroundColor="Black" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+      <Grid.ColumnDefinitions>
+       <ColumnDefinition Width="35*"/>
+        <ColumnDefinition Width="65*"/>
+     </Grid.ColumnDefinitions> 
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="30"/>
+        <RowDefinition Height="30"/>
+        <RowDefinition Height="30"/>
+      </Grid.RowDefinitions>
+      <Label Text="Standard Working Distance" Grid.Column="0" Grid.Row="0" Style="{StaticResource WorkingDistanceValue}" BackgroundColor="#E6E6E6" FontAttributes="Bold"/>
+      <Label Text="Equipment Type" Grid.Column="1" Grid.Row="0" Style="{StaticResource WorkingDistanceValue}" BackgroundColor="#E6E6E6" FontAttributes="Bold" />
+      <Label Text="18&quot;" Grid.Column="0" Grid.Row="1" Style="{StaticResource WorkingDistanceValue}"/>
+      <Label Text="     MCCs and PanelBoards" Grid.Column="1" Grid.Row="1" Style="{StaticResource EquipmentTypeValue}"/> 
+      <Label Text="24&quot;" Grid.Column="0" Grid.Row="2" Style="{StaticResource WorkingDistanceValue}"/>
+      <Label Text="     Low Voltage Switchgear" Grid.Column="1" Grid.Row="2" Style="{StaticResource EquipmentTypeValue}"/> 
+      <Label Text="36&quot;" Grid.Column="0" Grid.Row="3" Style="{StaticResource WorkingDistanceValue}"/>
+      <Label Text="     Medium Voltage Equipment" Grid.Column="1" Grid.Row="3" Style="{StaticResource EquipmentTypeValue}"/> 
+    </Grid>
+  </StackLayout>
+</ContentPage>

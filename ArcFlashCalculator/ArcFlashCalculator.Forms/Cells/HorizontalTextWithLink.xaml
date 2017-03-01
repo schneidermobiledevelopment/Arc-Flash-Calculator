@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:customViews="clr-namespace:ArcFlashCalculator.Forms.CustomViews;assembly=ArcFlashCalculator.Forms"
+          x:Class="ArcFlashCalculator.Forms.Cells.HorizontalTextWithLink">
+  <StackLayout Spacing="5" Padding="20,10">
+  <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+    <Label Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+    <Label Text="{Binding Text}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"  VerticalOptions="Center" />
+  </StackLayout>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+      <Image Source="about.png" WidthRequest="20" HeightRequest="20"/>
+      <customViews:UnderlinedLabel Text="Protective Clothing Requirements >" TextColor="#43A0FD"/>
+      <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding Command}"/>
+      </StackLayout.GestureRecognizers>
+    </StackLayout>
+  </StackLayout>
+</ViewCell>

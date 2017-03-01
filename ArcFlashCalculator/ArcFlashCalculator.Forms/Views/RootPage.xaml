@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArcFlashCalculator.Forms.Views.RootPage" Title="Menu" Icon="HamburgerIco.png">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="35*" />
+      <RowDefinition Height="45*" />
+      <RowDefinition Height="20*" />
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#3DCD58">
+    <Grid.RowDefinitions>
+      <!--<RowDefinition Height="30*" />
+      <RowDefinition Height="28*" />-->
+      <RowDefinition Height="50*" />
+      <RowDefinition Height="50*" />
+    </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="37*" />
+        <ColumnDefinition Width="70*" />
+        <ColumnDefinition Width="13*" />
+      </Grid.ColumnDefinitions>
+      <Image Source="Logo.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit" />
+      <Label Text="Arc Flash Calculator" FontAttributes="Bold"  Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"   FontSize="Medium"   TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+      <Label Text="3.0" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" FontSize="Micro" TextColor="White" VerticalTextAlignment="End" />
+    </Grid>
+    <ListView Grid.Row="1" ItemsSource="{Binding Menu}"  SelectedItem="{Binding SelectedMenu, Mode=TwoWay}" SeparatorVisibility="None" >
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Padding="15, 5, 15, 5" Orientation="Horizontal" Spacing="15">
+              <Image Source="{Binding icon}" HorizontalOptions="Center"/>
+              <Label Text="{Binding Title}" VerticalOptions="Center" TextColor="Black"/>
+            </StackLayout>
+           </ViewCell>
+          <!--<ImageCell Text="{Binding Title}" ImageSource="{Binding icon}"  />-->
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <Button BorderRadius="18" HeightRequest="36" Grid.Row="2" Text="www.schneider-electric.com" BackgroundColor="#3DCD58" HorizontalOptions="FillAndExpand" Margin="20,0,20,0" VerticalOptions="Center" TextColor="White" />
+  </Grid>
+  </ContentPage>

@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC0901B3-1E67-4AE1-BFAE-B24C19576939}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ArcFlashCalculator.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>ArcFlashCalculatoriOS</AssemblyName>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;__UNIFIED__;__MOBILE__;__IOS__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>True</MtouchDebug>
+    <MtouchSdkVersion>10.2</MtouchSdkVersion>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchEnableBitcode>False</MtouchEnableBitcode>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchFloat32>False</MtouchFloat32>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer: stuart.neilson@schneider-electric.com (4CCKJ4LGQA)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <BuildIpa>True</BuildIpa>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="iOSInitializer.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\CustomTableViewControl.cs" />
+    <Compile Include="Renderers\CustomTableViewRenderer.cs" />
+    <Compile Include="Renderers\CustomWebViewRenderer.cs" />
+    <Compile Include="Renderers\ListViewRenderer.cs" />
+    <Compile Include="Renderers\ViewCellRenderer.cs" />
+    <Compile Include="Renderers\DatePickerNoBorder.cs" />
+    <Compile Include="Renderers\EntryNoBorder.cs" />
+    <Compile Include="Renderers\PickerNoBorder.cs" />
+    <Compile Include="Renderers\UnderlinedLabelRenderer.cs" />
+    <Compile Include="SaveAndLoad.cs" />
+    <Compile Include="Services\Localize.cs" />
+    <None Include="app.config" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork@2x" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-60%403x.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small%403x.png" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HockeySDK, Version=1.0.6229.18486, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.1\lib\Xamarin.iOS10\HockeySDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HockeySDK.iOSBindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.1\lib\Xamarin.iOS10\HockeySDK.iOSBindings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Core.6.2.0\lib\Xamarin.iOS10\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Forms, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Forms.6.2.0\lib\Xamarin.iOS1.0\Prism.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Unity.Forms, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Unity.Forms.6.2.0\lib\Xamarin.iOS1.0\Prism.Unity.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.IOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.IOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SegmentedControl.FormsPlugin.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SegmentedControl.FormsPlugin.1.2.4\lib\Xamarin.iOS10\SegmentedControl.FormsPlugin.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SegmentedControl.FormsPlugin.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SegmentedControl.FormsPlugin.1.2.4\lib\Xamarin.iOS10\SegmentedControl.FormsPlugin.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Xfinium.Pdf.Pcl, Version=6.6.0.16, Culture=neutral, PublicKeyToken=3a083ecebc95eb1c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xfinium.Pdf.Pcl.6.6.0.16\lib\portable-net45+netcore45+wpa81+wp8\Xfinium.Pdf.Pcl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArcFlashCalculator.Core\ArcFlashCalculator.Core.csproj">
+      <Project>{ca21d78d-664c-4443-abc6-d243c3fc8193}</Project>
+      <Name>ArcFlashCalculator.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArcFlashCalculator.Forms\ArcFlashCalculator.Forms.csproj">
+      <Project>{3A458291-3380-46DB-B890-4C7C8DE19222}</Project>
+      <Name>ArcFlashCalculator.Forms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Icons.xcassets\about.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\about.imageset\ic_info_outline_2x_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\about.imageset\ic_info_outline_3x_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\about.imageset\ic_info_outline_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-120.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-152.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-167.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-180.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-40.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-58.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-76.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-80.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcons.appiconset\Icon-87.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Calculator.imageset\Calculator.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Calculator.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Checked.imageset\Checked@1x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Checked.imageset\Checked@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Checked.imageset\Checked@3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Checked.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\CheckedDove.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\CheckedDove.imageset\ic_done_2x_green.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\CheckedDove.imageset\ic_done_3x_green.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\CheckedDove.imageset\ic_done_green.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Close.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Close.imageset\ic_close_white.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Close.imageset\ic_close_white_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Close.imageset\ic_close_white_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Edit.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Edit.imageset\ic_mode_edit_2x_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Edit.imageset\ic_mode_edit_3x_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Edit.imageset\ic_mode_edit_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Error.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Error.imageset\ic_info_2x_red.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Error.imageset\ic_info_3x_red.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Error.imageset\ic_info_red.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Export.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Export.imageset\ic_get_app_white.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Export.imageset\ic_get_app_white_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Export.imageset\ic_get_app_white_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\FindPPE.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\FindPPE.imageset\ic_find_in_page_white_36pt.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\FindPPE.imageset\ic_find_in_page_white_36pt_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\FindPPE.imageset\ic_find_in_page_white_36pt_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\HamburgerIco.imageset\HamburgerIco.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\HamburgerIco.imageset\Menu Filled-22.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Help.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Help.imageset\ic_help_white.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Help.imageset\ic_help_white_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Help.imageset\ic_help_white_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlack.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlack.imageset\ic_open_in_new.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlack.imageset\ic_open_in_new_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlack.imageset\ic_open_in_new_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlue.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlue.imageset\ic_open_in_new_2x_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlue.imageset\ic_open_in_new_3x_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\OpenBlue.imageset\ic_open_in_new_blue.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\SelectedItem.imageset\black_dot.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\SelectedItem.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Settings.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Settings.imageset\ic_settings.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Settings.imageset\ic_settings_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Settings.imageset\ic_settings_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\startover.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\startover.imageset\ic_backspace.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\startover.imageset\ic_backspace_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\startover.imageset\ic_backspace_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\StartOverBig.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\StartOverBig.imageset\ic_backspace_48pt.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\StartOverBig.imageset\ic_backspace_48pt_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\StartOverBig.imageset\ic_backspace_48pt_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Unchecked.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Unchecked.imageset\Unchecked@1x.png.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Unchecked.imageset\Unchecked@2x.png.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Unchecked.imageset\Unchecked@3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\UnselectedItem.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\UnselectedItem.imageset\gray_dot.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Warning.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Warning.imageset\ic_warning_2x_yellow.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Warning.imageset\ic_warning_3x_yellow.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Icons.xcassets\Warning.imageset\ic_warning_yellow.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiagramPointOfWork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiagramMASC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiagramSFC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiagramXfmr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiagramArcDuration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiagramCable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Hamburger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Hamburger%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Hamburger%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MasterHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MasterFooter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\BlurryBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SchneiderLogo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+  </Target>
+</Project>

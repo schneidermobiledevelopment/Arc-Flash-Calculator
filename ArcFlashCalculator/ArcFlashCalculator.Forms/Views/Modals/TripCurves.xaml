@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customViews="clr-namespace:ArcFlashCalculator.Forms.CustomViews;assembly=ArcFlashCalculator.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.TripCurves"
+             Title="Find Trip Curves">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CloseCommand}"/>
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout Padding="20,10" Spacing="2">
+    <Label TextColor="Black">
+      <Label.Text>
+        Whenever possible, use manufacterer-provided device trip curves to determine the most precise Arc Duration Value
+      </Label.Text>
+    </Label>
+      <Label TextColor="Black" Margin="0,10">
+        <Label.Text>
+         If the exact Arc Duration cannot be determined, enter a value of 2 seconds.
+        </Label.Text>
+      </Label>
+      <StackLayout Orientation="Horizontal" Margin="0,10,0,5">
+        <Image Source="OpenBlue.png" HeightRequest="25" WidthRequest="25"/>
+        <customViews:UnderlinedLabel Text="Square D Trip Curves" TextColor="#43A0FD" VerticalTextAlignment="Center"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding SquareDCommand}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Margin="0,5">
+        <Image Source="OpenBlue.png" HeightRequest="25" WidthRequest="25"/>
+        <customViews:UnderlinedLabel Text="Eaton/ Cutler Hammer Trip Curves" TextColor="#43A0FD" VerticalTextAlignment="Center"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding EatonCommand}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Margin="0,5">
+        <Image Source="OpenBlue.png" HeightRequest="25" WidthRequest="25"/>
+        <customViews:UnderlinedLabel Text="GE Trip Curves" TextColor="#43A0FD" VerticalTextAlignment="Center"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding GECommand}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Margin="0,5">
+        <Image Source="OpenBlue.png" HeightRequest="25" WidthRequest="25"/>
+        <customViews:UnderlinedLabel Text="Siemens Trip Curves" TextColor="#43A0FD" VerticalTextAlignment="Center"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding SiemensCommand}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Margin="0,5">
+        <Image Source="OpenBlue.png" HeightRequest="25" WidthRequest="25"/>
+        <customViews:UnderlinedLabel Text="ABB Trip Curves" TextColor="#43A0FD" VerticalTextAlignment="Center"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding ABBCommand}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Margin="0,5">
+        <Image Source="OpenBlue.png" HeightRequest="25" WidthRequest="25"/>
+        <customViews:UnderlinedLabel Text="Toshiba Trip Curves" TextColor="#43A0FD" VerticalTextAlignment="Center"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding ToshibaCommand}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

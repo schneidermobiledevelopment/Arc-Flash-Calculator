@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ArcFlashCalculator.Forms.Cells.Normal">
+<!--<StackLayout Padding="20,10" Spacing="5" BackgroundColor="{Binding BackgroundColor}">
+  <Label Text="{Binding Title}" TextColor="{Binding TitleColor}"  />
+  <Label Text="{Binding Text}" TextColor="{Binding TextColor}" FontAttributes="{Binding FontAttributes}"/>
+</StackLayout>-->
+  <Grid Padding="20, 10" RowSpacing="5" ColumnSpacing="20" BackgroundColor="{Binding BackgroundColor}">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition x:Name="secondRow" Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Label Text="{Binding Title}" Grid.Column="0" Grid.Row="0" TextColor="{Binding TitleColor}" VerticalTextAlignment="Center" VerticalOptions="Center" />
+    <Label x:Name="text" Text="{Binding Text}" Grid.Column="0" Grid.Row="1" TextColor="{Binding TextColor}" FontAttributes="{Binding FontAttributes}" VerticalTextAlignment="Center"/>
+    <Label Text="{Binding Comment}" TextColor="Maroon" Grid.Column="1" Grid.RowSpan="2" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+  </Grid>
+</ViewCell>

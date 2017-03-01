@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customViews="clr-namespace:ArcFlashCalculator.Forms.CustomViews;assembly=ArcFlashCalculator.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.CalculateArcDurationOne"
+             Title="Calculate Arc Duration">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Technical Help" Icon="Help.png" Command="{Binding HelpCommand}" />
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CancelCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0">
+      <customViews:TitleBar/>
+      <customViews:CustomTableView Intent="Form" VerticalOptions="Fill" HasUnevenRows="true"  >
+        <TableRoot>
+          <TableSection Title="Breaker Settings">
+            <!--Sensor Rating-->
+            <customViews:CustomEntryCell x:Name="SensorRating" LabelText="Sensor Rating" EntryText="{Binding CalculationInput.SensorRating , Converter={StaticResource IntConverter}}" WidthC1="60*" WidthC2="40*" IsRequired="false" Keyboard="Numeric" EntryPlaceholder="Example: 4000" ErrorText="{Binding SensorRatingErrorMessage}"/>
+            <!-- Multiple of sensor rating-->
+            <ViewCell>
+              <Grid BackgroundColor="#E6E6E6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,20">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="60*" />
+                  <ColumnDefinition Width="40*" />
+                </Grid.ColumnDefinitions>
+                <customViews:LabelRequired Grid.Column="0" Text="Multiple of Sensor Rating" IsRequired="false" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Label Grid.Column="1" Text="{Binding CalculationOutput.MultipleOfSensorRating, Converter={StaticResource NullToZeroConverter}, StringFormat='{0:N2}'}" HorizontalOptions="End" VerticalOptions="Center" TextColor="Black"/>
+              </Grid>
+            </ViewCell>
+            <!--Device Manufacter-->
+            <!--<ViewCell>
+          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="50*" />
+              <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            <customViews:LabelRequired Grid.Column="0" Text="Device Manufacter" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <Picker Title="Choose..." ItemsSource="{Binding Manufacturers, Converter={StaticResource ManufacterItemsConverter}}" SelectedItem="{Binding ArcDuration.Manufacturer, Mode=TwoWay, Converter={StaticResource ManufacterConverter}}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+          </Grid>
+        </ViewCell>-->
+            <customViews:CustomPickerCell LabelText="Device Manufacturer" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding Manufacturers, Converter={StaticResource PickerItemsConverter}, ConverterParameter=Manufacturer}" SelectedItem="{Binding CalculationInput.ArcDuration.Manufacturer, Converter={StaticResource PickerConverter}, ConverterParameter=Manufacturer}" />
+            <!--Breaker Style-->
+            <!-- <ViewCell>
+          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="50*" />
+              <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            <customViews:LabelRequired Grid.Column="0" Text="Breaker Style" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <customViews:BindablePicker IsEnabled="{Binding BreakerEnabled}" Title="Choose..." ItemsSource="{Binding BreakerStyles , Converter={StaticResource BreakerStyleItemsConverter}}" SelectedItem="{Binding ArcDuration.BreakerStyle, Mode=TwoWay, Converter={StaticResource BreakerStyleConverter}}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+          </Grid>
+            </ViewCell>-->
+            <customViews:CustomPickerCell IsPickerEnabled="{Binding BreakerEnabled}" LabelText="Breaker Style" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding BreakerStyles, Converter={StaticResource PickerItemsConverter}, ConverterParameter=BreakerStyle}" SelectedItem="{Binding CalculationInput.ArcDuration.BreakerStyle, Mode=TwoWay, Converter={StaticResource PickerConverter},ConverterParameter=BreakerStyle}" />
+
+            <!--Trip Unit Type-->
+            <!--<ViewCell>
+          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="50*" />
+              <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            <customViews:LabelRequired Grid.Column="0" Text="Trip Unit Type" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <customViews:BindablePicker Title="Choose..." IsEnabled="{Binding TripUnitEnabled}" ItemsSource="{Binding TripUnitTypes, Converter={StaticResource TripUnitItemsConverter}}" SelectedItem="{Binding ArcDuration.TripUnitType , Mode=TwoWay, Converter={StaticResource TripUnitConverter}}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+          </Grid>
+          
+        </ViewCell>-->
+            <customViews:CustomPickerCell IsPickerEnabled="{Binding TripUnitEnabled}" LabelText="Trip Unit Type" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding TripUnitTypes, Converter={StaticResource PickerItemsConverter}, ConverterParameter=TripUnitType}" SelectedItem="{Binding CalculationInput.ArcDuration.TripUnitType, Converter={StaticResource PickerConverter},ConverterParameter=TripUnitType}" />
+
+            <!--<ViewCell>
+              <StackLayout BackgroundColor="#E6E6E6" Padding="20,5">
+                <Label FontAttributes="Bold" Text="Device not listed?"/>
+                <Label Text="Go back &amp; choose &quot;Find Equipment Trip Curves&quot; for more information." />
+              </StackLayout>
+            </ViewCell>-->
+          </TableSection>
+        </TableRoot>
+      </customViews:CustomTableView>
+      <StackLayout BackgroundColor="#E6E6E6" Padding="20,5" VerticalOptions="StartAndExpand" IsVisible="False">
+        <Label FontAttributes="Bold" Text="Device not listed?"/>
+        <Label Text="Go back &amp; choose &quot;Find Equipment Trip Curves&quot; for more information." />
+      </StackLayout>
+      <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="20,0,20,5" Orientation="Horizontal" >
+    <Label Text="*" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Red"  FontSize="Small" />
+    <Label Text="Required fields" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small"  />
+  </StackLayout>
+   <StackLayout Orientation="Horizontal" BackgroundColor="#FFEDEDED" Padding="15,5" Spacing="15">
+     <Image Source="Warning.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Start" />
+     <Label Text="WARNING: You must obtain permission from the facility owner before making changes to any device trip settings"/>
+   </StackLayout>
+  <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#D1D1D1"/>
+  <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+    <Label Text="CANCEL" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#43A0FD">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer
+                Command="{Binding CancelCommand}"
+                NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+    <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End" TextColor="{Binding IsEnabled, Converter={StaticResource EnableConverter}}">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer
+                Command="{Binding NextCommand}"
+                NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+  </StackLayout>
+</StackLayout>
+</ContentPage.Content>
+</ContentPage>

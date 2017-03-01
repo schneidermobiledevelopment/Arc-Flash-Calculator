@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.DCCircuitDiagram"
+             NavigationPage.BackButtonTitle="Back"
+             Title="Arc Flash Calculator">
+  <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0" >
+    <custom:TitleBar/>
+    <custom:CustomTableView Intent="Form" HasUnevenRows="true" HorizontalOptions="Fill"  VerticalOptions="Start"  HeightRequest="50">
+      <TableRoot>
+        <TableSection Title="Circuit Diagram Preview"/>
+      </TableRoot>
+    </custom:CustomTableView>
+    <ScrollView>
+      <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Padding="10,5" RowSpacing="0" >
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="70*" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+              </Grid.RowDefinitions>
+
+              <!--<BoxView BackgroundColor="Black" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Fill" Grid.Column="0" Grid.Row="0" />-->
+              <Image Source="DiagramMASC.png" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start"  Aspect="AspectFill" Margin="0,10,0,0"/>
+              <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" Grid.Row="0"   Spacing="0">
+                <Label Text="Maximum Available Short Circuit Current" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                <Label Text="{Binding CalculationInput.MaximumShortCircuitAvailable, StringFormat='{0} A'}" HorizontalOptions="Center" />
+              </StackLayout>
+              <!--<BoxView BackgroundColor="Black" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Fill" Grid.Column="0" Grid.Row="1" />-->
+              <Image Source="DiagramPointOfWork.png" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,10" />
+              <StackLayout HorizontalOptions="Center" VerticalOptions="Fill" Grid.Column="1" Grid.Row="1"  Spacing="0">
+                <Label Text="Point of Work" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+              </StackLayout>
+            </Grid>
+    </ScrollView>
+    <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#D1D1D1" VerticalOptions="EndAndExpand"/>
+    <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="50" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <!--<Label Text="BACK" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding BackCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>-->
+      <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#3DCD58">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding NextCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

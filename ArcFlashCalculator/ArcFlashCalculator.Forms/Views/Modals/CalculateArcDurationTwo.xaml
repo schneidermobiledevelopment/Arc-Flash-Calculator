@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customViews="clr-namespace:ArcFlashCalculator.Forms.CustomViews;assembly=ArcFlashCalculator.Forms"
+             xmlns:forms="clr-namespace:ArcFlashCalculator.Forms;assembly=ArcFlashCalculator.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.CalculateArcDurationTwo"
+             NavigationPage.BackButtonTitle="Back"
+             Title="Calculate Arc Duration">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Technical Help" Icon="Help.png" Command="{Binding HelpCommand}" />
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CancelCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0">
+      <customViews:TitleBar/>
+      <customViews:CustomTableView Intent="Form" VerticalOptions="Fill" HasUnevenRows="true"  >
+        <TableRoot>
+      <TableSection Title="Breaker Settings">
+            <customViews:CustomEntryCell LabelText="{forms:Translate Long_Time_Pickup}" IsRequired="True" EntryText="{Binding CalculationInput.ArcDuration.LongTimePickup, Converter={StaticResource DecimalConverter}}" Keyboard="Numeric" EntryPlaceholder="Example: 1" WidthC1="50*" WidthC2="50*"  ErrorText="{Binding LongTimePickupErrorMessage}"/>
+            <customViews:CustomPickerCell LabelText="{forms:Translate Long_Time_Delay}" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding LongTimeDelays, Converter={StaticResource PickerItemsConverter}, ConverterParameter=LongTimeDelay}" SelectedItem="{Binding CalculationInput.ArcDuration.LongTimeDelay, Mode=TwoWay, Converter={StaticResource PickerConverter}, ConverterParameter=LongTimeDelay}" />
+            <customViews:CustomPickerCell LabelText="{forms:Translate Short_Time_Pickup}" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding ShortTimePickups, Converter={StaticResource PickerItemsConverter}, ConverterParameter=ShortTimePickup}" SelectedItem="{Binding CalculationInput.ArcDuration.ShortTimePickup, Mode=TwoWay, Converter={StaticResource PickerConverter}, ConverterParameter=ShortTimePickup}" />
+            <customViews:CustomPickerCell LabelText="{forms:Translate Short_Time_Delay}" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding ShortTimeDelays, Converter={StaticResource PickerItemsConverter},ConverterParameter=ShortTimeDelay}" SelectedItem="{Binding CalculationInput.ArcDuration.ShortTimeDelay, Mode=TwoWay, Converter={StaticResource PickerConverter}, ConverterParameter=ShortTimeDelay}" />
+            <customViews:CustomPickerCell LabelText="{forms:Translate Instantaneous}" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding Instantaneous, Converter={StaticResource PickerItemsConverter}, ConverterParameter=Instantaneous}" SelectedItem="{Binding CalculationInput.ArcDuration.Instantaneous, Mode=TwoWay, Converter={StaticResource PickerConverter}, ConverterParameter=Instantaneous}" />
+      </TableSection>
+    </TableRoot>
+  </customViews:CustomTableView>
+  <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="20,0,20,5" Orientation="Horizontal" >
+    <Label Text="*" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Red"  FontSize="Small" />
+    <Label Text="Required fields" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small"  />
+  </StackLayout>
+   <StackLayout Orientation="Horizontal" BackgroundColor="#FFEDEDED" Padding="15,5" Spacing="15">
+     <Image Source="Warning.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Start" />
+     <Label Text="WARNING: You must obtain permission from the facility owner before making changes to any device trip settings"/>
+   </StackLayout>
+  <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#D1D1D1"/>
+  <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+    <Label Text="CANCEL" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#43A0FD">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer
+                Command="{Binding CancelCommand}"
+                NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+    <Label Text="CALCULATE" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End" TextColor="{Binding IsEnabled, Converter={StaticResource EnableConverter}}">
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer
+                Command="{Binding CalculateCommand}"
+                NumberOfTapsRequired="1" />
+      </Label.GestureRecognizers>
+    </Label>
+  </StackLayout>
+</StackLayout>
+</ContentPage.Content>
+</ContentPage>

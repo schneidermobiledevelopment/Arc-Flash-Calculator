@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ArcFlashCalculator.Forms.Cells.TextCenteredWithError">
+  <StackLayout Padding="0,10">
+    <Label Text="{Binding Title}" TextColor="{Binding TitleColor}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>
+    <Label Text="{Binding Text}" FontAttributes="Bold" TextColor="{Binding TextColor}" FontSize="Medium" HorizontalTextAlignment="Center"/>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="20,0">
+      <Image Source="Error.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
+      <Label TextColor="Red" HorizontalTextAlignment="Start"  >
+        <Label.Text>
+          Do not proceed. Use the button to "Find a Safe Working Distance for Available PPE" or contact your supervisor for instructions.
+        </Label.Text>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+</ViewCell>

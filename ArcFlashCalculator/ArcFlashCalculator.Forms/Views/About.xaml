@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.About">
+  <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Image Source="BlurryBackground.png"  Aspect="AspectFill"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"/>
+    <Image x:Name="hamburgerIcon" Source="Hamburger.png" HeightRequest="25" WidthRequest="25">
+      <Image.Margin>
+        <OnPlatform x:TypeArguments="Thickness"  Android="10,15" iOS="15,35"/>
+      </Image.Margin>
+    </Image>
+    <Image Source="MasterHeader.png" HeightRequest="30"
+           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=hamburgerIcon , Property=Width, Factor=1.5,Constant=0}">
+        <Image.Margin>
+          <OnPlatform x:TypeArguments="Thickness"  Android="15,10" iOS="20,30"/>
+        </Image.Margin>
+      </Image>
+      <BoxView x:Name="alphaBoxView" BackgroundColor="#80009530" HeightRequest="30"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent , Property=Height, Factor=.25,Constant=0}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"/>
+    <BoxView BackgroundColor="#3dcd58" HeightRequest="30" 
+              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent , Property=Height, Factor=.25,Constant=30}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"/>
+    <StackLayout BackgroundColor="White" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent , Property=Height, Factor=.25,Constant=60}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.75,Constant=-60}" Padding="30,20">
+      <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+        <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center">
+          <Label.Text>
+            This application is protected by copyright law and internationaltreaties.
+© 2016 Schneider Electric Industries SAS. 
+All Rights Reserved
+          </Label.Text>
+        </Label>
+        <Image Source="MasterFooter.png" HeightRequest="40" HorizontalOptions="Start" VerticalOptions="EndAndExpand"/>
+      </StackLayout>
+      <Image Source="SchneiderLogo.png" HeightRequest="60" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"/>
+    </StackLayout>
+   
+  </RelativeLayout>
+</ContentPage>

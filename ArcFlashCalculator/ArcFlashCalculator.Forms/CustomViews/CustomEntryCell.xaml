@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell x:Name="Control" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews" x:Class="ArcFlashCalculator.Forms.CustomViews.CustomEntryCell" >
+  <StackLayout x:Name="mainLayout" Spacing="0" VerticalOptions="Fill">
+    <StackLayout.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="20,15,20,0" Android="20,0"/>
+    </StackLayout.Padding>
+      <Grid VerticalOptions="CenterAndExpand">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition x:Name="C1" Width="30*" />
+          <ColumnDefinition x:Name="C2" Width="70*" />
+        </Grid.ColumnDefinitions>
+        <custom:LabelRequired x:Name="lbl" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="entry" Text="{Binding EntryText, Source={Reference Control}}" Grid.Column="1" Keyboard="Default" HorizontalTextAlignment ="End" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
+      </Grid>
+    <StackLayout x:Name="errorStack" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+      <StackLayout.IsVisible>
+        <OnPlatform x:TypeArguments="x:Boolean" iOS="true" Android="false"/>
+      </StackLayout.IsVisible>
+      <Image x:Name="errorImg" Source="Error.png" HeightRequest="15" WidthRequest="15" VerticalOptions="CenterAndExpand"/>
+      <Label x:Name="error" Text="{Binding ErrorText, Source={Reference Control}}" TextColor="Red" FontSize="14" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+  </StackLayout>  
+  <!--<Grid x:Name="container" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" Padding="20,0">
+      <Grid.ColumnDefinitions>
+      <ColumnDefinition x:Name="C1" Width="30*" />
+      <ColumnDefinition x:Name="C2" Width="70*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition x:Name="R1" >
+        <RowDefinition.Height>
+          <OnPlatform x:TypeArguments="GridLength" iOS="Auto" Android="Auto"/>
+        </RowDefinition.Height>
+      </RowDefinition>
+      <RowDefinition x:Name="R2">
+        <RowDefinition.Height>
+          <OnPlatform x:TypeArguments="GridLength" iOS="40*" Android="0"/>
+        </RowDefinition.Height>
+      </RowDefinition> 
+    </Grid.RowDefinitions>
+      <custom:LabelRequired x:Name="lbl" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" BackgroundColor="Fuchsia" >
+        <custom:LabelRequired.VerticalOptions>
+        <OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand"/>
+        </custom:LabelRequired.VerticalOptions>
+      </custom:LabelRequired>
+      <Entry x:Name="entry" Text="{Binding EntryText, Source={Reference Control}}" Grid.Column="1" Grid.Row="0" Keyboard="Default" HorizontalTextAlignment ="End" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+    <StackLayout x:Name="errorStack" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Orientation="Horizontal" IsVisible="False">
+      <Image  Source="Error.png" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand"/>
+      <Label x:Name="error" Text="{Binding ErrorText, Source={Reference Control}}" TextColor="Red" FontSize="16" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>
+      </StackLayout>
+    </Grid>-->
+  </ViewCell>

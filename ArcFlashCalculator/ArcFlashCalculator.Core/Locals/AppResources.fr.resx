@@ -1,0 +1,751 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Accion</value>
+  </data>
+  <data name="Action_Example" xml:space="preserve">
+    <value>Example: Voltage test</value>
+  </data>
+  <data name="Arc_Duration_seconds" xml:space="preserve">
+    <value>Arc Duration (seconds)</value>
+  </data>
+  <data name="Arc_Duration_Example" xml:space="preserve">
+    <value>Example: 0.5</value>
+  </data>
+  <data name="Arc_Flash_Boundary_Inches" xml:space="preserve">
+    <value>Arc Flash Boundary (inches)</value>
+  </data>
+  <data name="Arc_Flash_Estimate" xml:space="preserve">
+    <value>Arc Flash Estimate:</value>
+  </data>
+  <data name="At_Working_Distance" xml:space="preserve">
+    <value>at Working Distance:</value>
+  </data>
+  <data name="Battery_Enclosure" xml:space="preserve">
+    <value>Battery Enclosure?</value>
+  </data>
+  <data name="Battery_String_Voltage" xml:space="preserve">
+    <value>Battery String Voltage (volts)</value>
+  </data>
+  <data name="Bolted_Fault_Current" xml:space="preserve">
+    <value>Bolted Fault Current (kA)</value>
+  </data>
+  <data name="Breaker_Style" xml:space="preserve">
+    <value>Breaker Style</value>
+  </data>
+  <data name="Cable" xml:space="preserve">
+    <value>Cable</value>
+  </data>
+  <data name="Calculate_Arc_Duration_Button" xml:space="preserve">
+    <value>Calculate Arc Duration</value>
+  </data>
+  <data name="Circuit_Diagram_Heading" xml:space="preserve">
+    <value>Circuit  Diagram Preview:</value>
+  </data>
+  <data name="Conductor" xml:space="preserve">
+    <value>Conductor?</value>
+  </data>
+  <data name="Conductor_Length" xml:space="preserve">
+    <value>Conductor Length (feet)</value>
+  </data>
+  <data name="Conductors_per_Phase" xml:space="preserve">
+    <value># Conductors per Phase</value>
+  </data>
+  <data name="Conductor_Per_Phase_Example" xml:space="preserve">
+    <value>Example: 12</value>
+  </data>
+  <data name="Conductor_Size" xml:space="preserve">
+    <value>Conductor Size (kcmil/AWG)</value>
+  </data>
+  <data name="Danger_Summary" xml:space="preserve">
+    <value>DO NOT PROCEED! Use the button above to
+"Find Safe Working Distance for Available PPE"
+or contact your supervisor for instructions.</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Device_Manufacturer" xml:space="preserve">
+    <value>Device Manufacturer</value>
+  </data>
+  <data name="Equipment_Enclosure" xml:space="preserve">
+    <value>Equipment Enclosure?</value>
+  </data>
+  <data name="Equipment_Type" xml:space="preserve">
+    <value>Equipment Type</value>
+  </data>
+  <data name="Estimated_Arc_Current" xml:space="preserve">
+    <value>Estimated Arc Current (kA)</value>
+  </data>
+  <data name="Estimated_Arc_Fault_Current" xml:space="preserve">
+    <value>Estimated Arc Fault Current (kA)</value>
+  </data>
+  <data name="Exceeds_40" xml:space="preserve">
+    <value>Exceeds 40 cal/cm²</value>
+  </data>
+  <data name="Find_Equipment_Trip_Curves" xml:space="preserve">
+    <value>Find Equipment Trip Curves</value>
+  </data>
+  <data name="Find_Safe_Working_Distance" xml:space="preserve">
+    <value>Find Safe Working Distance for Available PPE</value>
+  </data>
+  <data name="Flash_Protection_Boundary" xml:space="preserve">
+    <value>Flash Protection Boundary (ft)</value>
+  </data>
+  <data name="Grounding" xml:space="preserve">
+    <value>Grounding</value>
+  </data>
+  <data name="Grounding_Method" xml:space="preserve">
+    <value>Grounding Method</value>
+  </data>
+  <data name="Hazard_Risk_Category" xml:space="preserve">
+    <value>HAZARD/RISK CATEGORY</value>
+  </data>
+  <data name="Inches" xml:space="preserve">
+    <value> inches</value>
+  </data>
+  <data name="Incident_Energy" xml:space="preserve">
+    <value>INCIDENT ENERGY</value>
+  </data>
+  <data name="Incident_Energy_18" xml:space="preserve">
+    <value>Incident Energy 18" (cal/cm²)</value>
+  </data>
+  <data name="Incident_Energy_24" xml:space="preserve">
+    <value>Incident Energy 24" (cal/cm²)</value>
+  </data>
+  <data name="Incident_Energy_36" xml:space="preserve">
+    <value>Incident Energy 36'' (cal/cm²)</value>
+  </data>
+  <data name="Incident_Engery_At_Less_Than_50_Volts" xml:space="preserve">
+    <value>Incident Engery at Less Than 50 volts</value>
+  </data>
+  <data name="Instantaneous" xml:space="preserve">
+    <value>Instantaneous (li)</value>
+  </data>
+  <data name="Insulating_Gloves_Class" xml:space="preserve">
+    <value>INSULATING GLOVES CLASS</value>
+  </data>
+  <data name="In_Box" xml:space="preserve">
+    <value>In Box</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Location_Example" xml:space="preserve">
+    <value>Example: XYZ Facility-Dallas,TX</value>
+  </data>
+  <data name="Long_Time_Delay" xml:space="preserve">
+    <value>Long Time Delay (tr)</value>
+  </data>
+  <data name="Long_Time_Pickup" xml:space="preserve">
+    <value>Long Time Pickup (lr)</value>
+  </data>
+  <data name="Multiple_Of_Sensor_Rating" xml:space="preserve">
+    <value>Multiple of Sensor Rating</value>
+  </data>
+  <data name="Nominal_Working_Voltage" xml:space="preserve">
+    <value>Nominal Working Voltage (volts)</value>
+  </data>
+  <data name="Nominal_Voltage_Example" xml:space="preserve">
+    <value>Example: 240</value>
+  </data>
+  <data name="No_Cable" xml:space="preserve">
+    <value>No Cable - Bus Only</value>
+  </data>
+  <data name="No_Transformer" xml:space="preserve">
+    <value>No Transformer</value>
+  </data>
+  <data name="Open_Air" xml:space="preserve">
+    <value>Open Air</value>
+  </data>
+  <data name="Personnel" xml:space="preserve">
+    <value>Personnel</value>
+  </data>
+  <data name="Personnel_Example" xml:space="preserve">
+    <value>Example: Jane Smith</value>
+  </data>
+  <data name="Potential_Arc_Location" xml:space="preserve">
+    <value>Potential Arc Location</value>
+  </data>
+  <data name="Primary_Voltage" xml:space="preserve">
+    <value>Primary Voltage (volts)</value>
+  </data>
+  <data name="Primary_Voltage_Example" xml:space="preserve">
+    <value>Example: 2000</value>
+  </data>
+  <data name="Sensor_Rating" xml:space="preserve">
+    <value>Sensor Rating</value>
+  </data>
+  <data name="Sensor_Rating_Example" xml:space="preserve">
+    <value>Example: 4000</value>
+  </data>
+  <data name="Short_Time_Delay" xml:space="preserve">
+    <value>Short Time Delay (tsd)</value>
+  </data>
+  <data name="Short_Time_Pickup" xml:space="preserve">
+    <value>Short Time Pickup (lsd)</value>
+  </data>
+  <data name="Solidly_Grounded" xml:space="preserve">
+    <value>Solidly Grounded</value>
+  </data>
+  <data name="Source_Fault_Current_amps" xml:space="preserve">
+    <value>Source Fault Current (amps)</value>
+  </data>
+  <data name="Source_Fault_Current_Example" xml:space="preserve">
+    <value>Example: 15000</value>
+  </data>
+  <data name="Standard_Working_Distances" xml:space="preserve">
+    <value>Standard Working Distances</value>
+  </data>
+  <data name="Transformer" xml:space="preserve">
+    <value>Transformer?</value>
+  </data>
+  <data name="Transformer_Impedence" xml:space="preserve">
+    <value>Transformer Impedence (%Z)</value>
+  </data>
+  <data name="Transformer_Impedence_Example" xml:space="preserve">
+    <value>Example: 5.75</value>
+  </data>
+  <data name="Transformer_KVA" xml:space="preserve">
+    <value>Transformer KVA</value>
+  </data>
+  <data name="Transformer_KVA_Example" xml:space="preserve">
+    <value>Example: 500</value>
+  </data>
+  <data name="Transformer_Z" xml:space="preserve">
+    <value>Transformer %Z</value>
+  </data>
+  <data name="Trip_Unit_Type" xml:space="preserve">
+    <value>Trip Unit Type</value>
+  </data>
+  <data name="Ungrounded" xml:space="preserve">
+    <value>Ungrounded (or Resistance Grounded)</value>
+  </data>
+  <data name="Upstream_Transformer" xml:space="preserve">
+    <value>Upstream Transformer?</value>
+  </data>
+  <data name="Upstream_XFR" xml:space="preserve">
+    <value>Upstream XFMR</value>
+  </data>
+  <data name="Voltage_Conductor" xml:space="preserve">
+    <value>Voltage Conductor</value>
+  </data>
+  <data name="Voltage_From_Transformer" xml:space="preserve">
+    <value>VoltageFromTransformer?</value>
+  </data>
+  <data name="Voltage_Shock_Hazard_AC" xml:space="preserve">
+    <value>Voltage Shock Hazard when Cover is Open: {0}V AC</value>
+  </data>
+  <data name="Voltage_Type" xml:space="preserve">
+    <value>Voltage Type</value>
+  </data>
+  <data name="Voltage_Type_AC" xml:space="preserve">
+    <value>AC</value>
+  </data>
+  <data name="Voltage_Type_DC" xml:space="preserve">
+    <value>DC</value>
+  </data>
+  <data name="Calculation_Preview_Heading" xml:space="preserve">
+    <value>CALCULATION PREVIEW</value>
+  </data>
+  <data name="Instantaneous_Setting" xml:space="preserve">
+    <value>Instantaneous (li) Setting</value>
+  </data>
+  <data name="Long_Time_Delay_Setting" xml:space="preserve">
+    <value>Long Time Delay (tr) Setting</value>
+  </data>
+  <data name="Long_Time_Pickup_Setting" xml:space="preserve">
+    <value>Long Time Pickup (lr) Setting</value>
+  </data>
+  <data name="Manufacturer" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="Maximum_Short_Circuit_Available" xml:space="preserve">
+    <value>Maximum Short Circuit Available</value>
+  </data>
+  <data name="Short_Time_Delay_Setting" xml:space="preserve">
+    <value>Short Time Delay (tsd) Setting</value>
+  </data>
+  <data name="Short_Time_Pickup_Setting" xml:space="preserve">
+    <value>Short Time Pickup (lsd) Setting</value>
+  </data>
+  <data name="Working_Conditions_Heading" xml:space="preserve">
+    <value>Working Conditions:</value>
+  </data>
+  <data name="ARC_Calculator_Result_Title" xml:space="preserve">
+    <value>ARC CALCULATOR RESULT</value>
+  </data>
+  <data name="Estimated_Arc_Flash_Current" xml:space="preserve">
+    <value>Estimated Arc Flash Current</value>
+  </data>
+  <data name="Incident_Energy_Measure" xml:space="preserve">
+    <value>(cal/cm²)</value>
+  </data>
+  <data name="PPE_LEVEL_REQUIRED" xml:space="preserve">
+    <value>PPE LEVEL REQUIRED</value>
+  </data>
+  <data name="Protective_Clothing_Requirements" xml:space="preserve">
+    <value>Protective Clothing Requirements</value>
+  </data>
+  <data name="Source_Voltage" xml:space="preserve">
+    <value>Source Voltage</value>
+  </data>
+  <data name="Do_Not_Use" xml:space="preserve">
+    <value>DO NOT USE for actual calculations</value>
+  </data>
+  <data name="Form_Contains_Error" xml:space="preserve">
+    <value>Form contains error(s)</value>
+  </data>
+  <data name="Minimum_Working_Distance_OnePointTwoCal" xml:space="preserve">
+    <value>1.2 cal/cm²</value>
+  </data>
+  <data name="Minimum_Working_Distance_40Cal" xml:space="preserve">
+    <value>40 cal/cm²</value>
+  </data>
+  <data name="Minimum_Working_Distance_8Cal" xml:space="preserve">
+    <value>8 cal/cm²</value>
+  </data>
+  <data name="New_Calculation_for_150_inches" xml:space="preserve">
+    <value>New Calculation Based on Working Distance at 150 inches</value>
+  </data>
+  <data name="New_Calculation_for_32_inches" xml:space="preserve">
+    <value>New Calculation Based on Working Distance at 32 inches</value>
+  </data>
+  <data name="New_Calculation_for_64_inches" xml:space="preserve">
+    <value>New Calculation Based on Working Distance at 64 inches</value>
+  </data>
+  <data name="Number_2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Number_3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Number_4" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Required_Fields" xml:space="preserve">
+    <value>Required Fields</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Standard_Working_Distance" xml:space="preserve">
+    <value>Standard Working Distance</value>
+  </data>
+  <data name="Star" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Arc Flash Calculator</value>
+  </data>
+  <data name="Trial_Version" xml:space="preserve">
+    <value>Trial Version:</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="Estimated_Arc_Fault_Current_amps" xml:space="preserve">
+    <value>Estimated Arc Fault Current (amps)</value>
+  </data>
+  <data name="Maximum_Incident_Energy" xml:space="preserve">
+    <value>Maximum Incident Energy</value>
+  </data>
+  <data name="Minimum_Working_Distance" xml:space="preserve">
+    <value>Minimum Working Distance</value>
+  </data>
+  <data name="Perform_New_Arc_Flash_Calculation" xml:space="preserve">
+    <value>Perform New Arc Flash Calculation?</value>
+  </data>
+  <data name="PPE_Rating_Hazard_Risk_Category" xml:space="preserve">
+    <value>PPE Rating: Hazard/Risk Category</value>
+  </data>
+  <data name="A" xml:space="preserve">
+    <value> A</value>
+  </data>
+  <data name="Arc_Duration" xml:space="preserve">
+    <value>Arc Duration</value>
+  </data>
+  <data name="Ft" xml:space="preserve">
+    <value> ft.</value>
+  </data>
+  <data name="Hyphen" xml:space="preserve">
+    <value> - </value>
+  </data>
+  <data name="kcmil_Per_AWG" xml:space="preserve">
+    <value> kcmil/AWG</value>
+  </data>
+  <data name="KVA" xml:space="preserve">
+    <value> KVA</value>
+  </data>
+  <data name="Maximum_Available" xml:space="preserve">
+    <value>Maximum Available</value>
+  </data>
+  <data name="Point_Of_Work" xml:space="preserve">
+    <value>Point of work</value>
+  </data>
+  <data name="Sec" xml:space="preserve">
+    <value> sec.</value>
+  </data>
+  <data name="Short_Circuit_Amps" xml:space="preserve">
+    <value>Short Circuit (amps)</value>
+  </data>
+  <data name="Source_Fault_Current" xml:space="preserve">
+    <value>Source Fault Current</value>
+  </data>
+  <data name="V" xml:space="preserve">
+    <value> V</value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value> %Z</value>
+  </data>
+  <data name="Arc_Flash_Boundary_Feet" xml:space="preserve">
+    <value>Arc Flash Boundary (feet)</value>
+  </data>
+  <data name="Action_Tooltip_Message" xml:space="preserve">
+    <value>Describe the type of energized work that will be performed (example: troubleshooting, testing, verify de-energized).</value>
+  </data>
+  <data name="Alternating_Current_Tooltip_Message" xml:space="preserve">
+    <value>Select equipment voltage type where work will be performed.</value>
+  </data>
+  <data name="Arc_Duration_Tooltip_Message" xml:space="preserve">
+    <value>Time for upstream protective device (located outside of the enclosure to be worked-on) to operate for the arcing fault current calculated. Consider equipment condition and  maintenance. If protective device clearing time is unknown:a) Enter 2 seconds; or b) Consult time current curve for the device; or c) Request support from Engineering Services. Valid range: 0.01 - 2.00</value>
+  </data>
+  <data name="Calculate_Arc_Duration_Tooltip_Message" xml:space="preserve">
+    <value>Use this to calculate arc duration. A sensor rating must be provided for this calculation to work.</value>
+  </data>
+  <data name="Calculation_Date_Tooltip_Message" xml:space="preserve">
+    <value>Please select a date.</value>
+  </data>
+  <data name="Conductor_Length_Tooltip_Message" xml:space="preserve">
+    <value>Enter the cable length in feet.</value>
+  </data>
+  <data name="Conductor_Per_Phase_Tooltip_Message" xml:space="preserve">
+    <value>If parallel conductors are used, enter the number of conductors.</value>
+  </data>
+  <data name="Conductor_Size_Tooltip_Message" xml:space="preserve">
+    <value>Choose size of conductors or cable from transformer to equipment or from location where fault current is known to the equipment to be worked on. Conductor impedance is based on copper (CU)conductors</value>
+  </data>
+  <data name="Direct_Current_In_Cabinet_Tooltip_Message" xml:space="preserve">
+    <value>Battery Rack = Open Air </value>
+  </data>
+  <data name="Direct_Current_Open_Air_Tooltip_Message" xml:space="preserve">
+    <value>Battery Cabinet = In Box</value>
+  </data>
+  <data name="Direct_Current_Tooltip_Message" xml:space="preserve">
+    <value>Select equipment voltage type where work will be performed.</value>
+  </data>
+  <data name="Equipment_Type_Tooltip_Message" xml:space="preserve">
+    <value>Choose the type of equipment where energized work will be performed.</value>
+  </data>
+  <data name="Has_Cable_Tooltip_Message" xml:space="preserve">
+    <value>Select whether equipment voltage is supplied from a cable or bus only.</value>
+  </data>
+  <data name="Has_Transformer_Tooltip_Message" xml:space="preserve">
+    <value>Select whether an upstream transformer is present.</value>
+  </data>
+  <data name="In_Box_Tooltip_Message" xml:space="preserve">
+    <value>Select whether arc potential is in open air or in an enclosure.</value>
+  </data>
+  <data name="Location_Tooltip_Message" xml:space="preserve">
+    <value>Facility and specific equipment where the arc flash levels are being calculated.</value>
+  </data>
+  <data name="Maximum_Short_Circuit_Available_Tooltip_Message" xml:space="preserve">
+    <value>Short-Circuit Amps per battery manufacturer technical specification.
+If Manufacturer does not publish "Maximum Available Short Circuit" level but "1 minute current to 1.75 volts per cell (VPC)" is published, then the Maximum Short Circuit can be conservatively calculated by multiplying the "1 minute amp to 1.75 VPC" value by 10.</value>
+  </data>
+  <data name="Nominal_Voltage_Tooltip_Message_Default" xml:space="preserve">
+    <value>Bus voltage of the equipment to be worked on OR - if transformer is present, transformer secondary voltage.
+
+Valid Range: 30-36000</value>
+  </data>
+  <data name="No_Cable_Tooltip_Message" xml:space="preserve">
+    <value>Select whether equipment voltage is supplied from a cable or bus only.</value>
+  </data>
+  <data name="No_Transformer_Tooltip_Message" xml:space="preserve">
+    <value>Select whether an upstream transformer is present.</value>
+  </data>
+  <data name="Open_Air_Tooltip_Message" xml:space="preserve">
+    <value>Select whether arc potential is in open air or in an enclosure.</value>
+  </data>
+  <data name="Personnel_Tooltip_Message" xml:space="preserve">
+    <value>All personnel who should be informed of the available arc flash levels.</value>
+  </data>
+  <data name="Primary_Voltage_Tooltip_Message" xml:space="preserve">
+    <value>Voltage at the transformer primary Valid range: 208 - 138000</value>
+  </data>
+  <data name="Sensor_Rating_Tooltip_Message" xml:space="preserve">
+    <value>If using a Square D time current curve to determine device opening time, enter the sensor rating based on curve data.</value>
+  </data>
+  <data name="Solid_Grounding_Tooltip_Message" xml:space="preserve">
+    <value>Select the system grounding method.</value>
+  </data>
+  <data name="Source_Fault_Current_Tooltip_Message" xml:space="preserve">
+    <value>The available short-circuit current supplied by the utility or on-site generator.  If not known use 99999 at the primary of the serving transformer.</value>
+  </data>
+  <data name="UnGrounded_Tooltip_Message" xml:space="preserve">
+    <value>Select the system grounding method.</value>
+  </data>
+  <data name="Voltage_Of_Battery_Tooltip_Message" xml:space="preserve">
+    <value>Maximum string voltage, or partial string voltage if all batteries are not connected.</value>
+  </data>
+  <data name="Xfmr_Impedance_Tooltip_Message" xml:space="preserve">
+    <value>Transformer percent impedance (%Z or %X). Typcially found on transformer nameplate.Valid range: 1.00 - 15.00</value>
+  </data>
+  <data name="Xfmr_KVA_Tooltip_Message" xml:space="preserve">
+    <value>Transformer kVA is require to determine available fault current on secondary of transformer.Data may be found on transformer nameplate.</value>
+  </data>
+  <data name="In_Cabinet" xml:space="preserve">
+    <value>In Cabinet</value>
+  </data>
+  <data name="Bolted_Fault_Current_amps" xml:space="preserve">
+    <value>Bolted Fault Current (amps)</value>
+  </data>
+  <data name="DANGER" xml:space="preserve">
+    <value>DANGER</value>
+  </data>
+  <data name="CalCentimeterSquared" xml:space="preserve">
+    <value> cal/cm²</value>
+  </data>
+  <data name="OriginalCalculationBasedOnStandardWorkingDistance" xml:space="preserve">
+    <value>Original Calculation Based on Standard Working Distance at {0:N0} inches</value>
+  </data>
+  <data name="InchesNonStandard" xml:space="preserve">
+    <value> {0} inches (non-standard)</value>
+  </data>
+  <data name="InchesStandard" xml:space="preserve">
+    <value> {0} inches (standard)</value>
+  </data>
+  <data name="Breaker_Settings_Heading" xml:space="preserve">
+    <value>Breaker Settings</value>
+  </data>
+  <data name="Conductor_Heading" xml:space="preserve">
+    <value>Conductor</value>
+  </data>
+  <data name="General_Heading" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Transformer_Heading" xml:space="preserve">
+    <value>Transformer</value>
+  </data>
+  <data name="ARC_FLASH_ESTIMATE_REPORT" xml:space="preserve">
+    <value>ARC FLASH ESTIMATE REPORT</value>
+  </data>
+  <data name="INCIDENT_ENERGY_PARAMETERS" xml:space="preserve">
+    <value>INCIDENT ENERGY PARAMETERS</value>
+  </data>
+  <data name="PARAMETER_CONFIRMATION" xml:space="preserve">
+    <value>PARAMETER CONFIRMATION</value>
+  </data>
+  <data name="UseForNewCalculation" xml:space="preserve">
+    <value>Use For New Calculation</value>
+  </data>
+  <data name="ClothingDescriptionDetails40PartA" xml:space="preserve">
+    <value>Arc Flash Suit</value>
+  </data>
+  <data name="ClothingDescriptionDetails40PartB" xml:space="preserve">
+    <value>A total clothing system consisting of arc rated shirt and pants and/or arc-rated coveralls and/or arc flash coat and pants(clothing system minimum arc rating of 40)</value>
+  </data>
+  <data name="ClothingDescriptionDetails8PartA" xml:space="preserve">
+    <value>Arc-rated long-sleeve shirt with arc-rated pants (minimum arc rating of 8)</value>
+  </data>
+  <data name="ClothingDescriptionDetails8PartB" xml:space="preserve">
+    <value>Arc-rated coveralls(minimum arc rating of 8)</value>
+  </data>
+  <data name="ClothingDescriptionDetailsOnePointTwo" xml:space="preserve">
+    <value>Arc-rated FR shirt and FR pants or arc-rated FR coverall, and arc flash suit selected so that the system arc rating meets the minimum</value>
+  </data>
+  <data name="Clothing_Description" xml:space="preserve">
+    <value>Clothing Description</value>
+  </data>
+  <data name="LessThanEqualToOnePointTwo" xml:space="preserve">
+    <value>&lt;= 1.2  cal/cm²</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="Required_Minimum_Arc_Rating" xml:space="preserve">
+    <value>Required Minimum Arc Rating of PPE (cal/cm²)</value>
+  </data>
+  <data name="Voltage_Shock_Hazard_DC" xml:space="preserve">
+    <value>Voltage Shock Hazard when Cover is Open: {0}V DC</value>
+  </data>
+  <data name="Circuit_Amps" xml:space="preserve">
+    <value>Circuit (amps)</value>
+  </data>
+  <data name="Maximum_Available_Short" xml:space="preserve">
+    <value>Maximum Available Short</value>
+  </data>
+  <data name="Maximum_Available_Short_Circuit" xml:space="preserve">
+    <value>Maximum Available Short Circuit (amps)</value>
+  </data>
+  <data name="Calculated_Arc_Duration" xml:space="preserve">
+    <value>Calculated Arc Duration = {0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Calculation_Name" xml:space="preserve">
+    <value>Calculation Name</value>
+  </data>
+  <data name="Calculation_Name_Instructions" xml:space="preserve">
+    <value>Please provide a name for this calculation.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Nominal_Voltage_Tooltip_Message_Low_Voltage" xml:space="preserve">
+    <value>Bus voltage of the equipment to be worked on OR - if transformer is present, transformer secondary voltage.
+
+Valid Range for Equipment Type: 30-1000</value>
+  </data>
+  <data name="Nominal_Voltage_Tooltip_Message_Medium_Voltage" xml:space="preserve">
+    <value>Bus voltage of the equipment to be worked on OR - if transformer is present, transformer secondary voltage.
+
+Valid Range for Equipment Type: 1001-36000</value>
+  </data>
+  <data name="Calculation_History" xml:space="preserve">
+    <value>Calculation History</value>
+  </data>
+  <data name="Calculate" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Find_Equipment_Trip_Curves_Header" xml:space="preserve">
+    <value>Whenever possible, use manufacturer-provided device trip curves to determine the most precise 
+Arc Duration value. If the exact Arc Duration cannot be determined, enter a value of 2 seconds.</value>
+  </data>
+  <data name="Calculation_History_Heading" xml:space="preserve">
+    <value>Please select a calculation below. WARNING!! Your selection will delete downstream calculations!</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>Date Format</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Units_of_Measure" xml:space="preserve">
+    <value>Units of Measure</value>
+  </data>
+</root>

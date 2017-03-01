@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customViews="clr-namespace:ArcFlashCalculator.Forms.CustomViews;assembly=ArcFlashCalculator.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcFlashCalculator.Forms.Views.PdfView"
+             Title="ARC FLASH ESTIMATE REPORT">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Close" Icon="Close.png" Command="{Binding CloseCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <customViews:CustomWebView Uri="ArcFlashEstimateReport.pdf" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></customViews:CustomWebView>
+  </ContentPage.Content>
+</ContentPage>

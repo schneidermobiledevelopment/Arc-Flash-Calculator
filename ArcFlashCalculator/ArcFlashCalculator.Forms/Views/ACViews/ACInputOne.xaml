@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:custom="clr-namespace:ArcFlashCalculator.Forms.CustomViews"
+             xmlns:forms="clr-namespace:ArcFlashCalculator.Forms;assembly=ArcFlashCalculator.Forms"
+             Title="Arc Flash Calculator"
+             NavigationPage.BackButtonTitle="Back"
+             x:Class="ArcFlashCalculator.Forms.Views.ACInputOne">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Technical Help" Icon="Help.png" Command="{Binding HelpCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0">
+    <custom:TitleBar/>
+    <custom:CustomTableView Intent="Form" VerticalOptions="Fill" HasUnevenRows="true"  >
+      <TableRoot>
+        <TableSection Title="Working Conditions">
+          <custom:CustomPickerCell LabelText="Equipment Type" IsRequired="True" PickerTitle="Choose..." ItemsSource="{Binding EquipmentTypes, Converter={StaticResource PickerItemsConverter}, ConverterParameter=EquipmentType}" SelectedItem="{Binding CalculationInput.EquipmentType, Converter={StaticResource PickerConverter}, ConverterParameter=EquipmentType}" />
+          <!--Grounding-->
+          <ViewCell>
+            <StackLayout Spacing="10" Padding="20,5">
+              <custom:LabelRequired Text="Grounding Method" IsRequired="true" VerticalOptions="Center" HorizontalOptions="Start"/>
+              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="5">
+              <custom:RadioButton x:Name="groundedButton" HorizontalOptions="EndAndExpand" Checked="{Binding CalculationInput.IsSolidGround , Mode=TwoWay, Converter={StaticResource BooleanConverter}}" Text="Solidly Grounded"/>
+              <custom:RadioButton x:Name="ungroundedButton" VerticalOptions="Center" HorizontalOptions="Fill" Checked="{Binding CalculationInput.IsSolidGround , Mode=TwoWay, Converter={StaticResource InverseBooleanConverter}}" Text="Ungrounded (or Resistance Grounded)" />                
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+          <!--Nominal Voltage-->
+          <custom:CustomEntryCell x:Name="nominal" LabelText="{forms:Translate Nominal_Working_Voltage}" EntryText="{Binding CalculationInput.NominalVoltage,  Converter={StaticResource DecimalConverter}}" WidthC1="60*" WidthC2="40*" IsRequired="true" Keyboard="Numeric" EntryPlaceholder="Example: 240" ErrorText="{Binding NominalVoltageErrorMessage}"/>
+          <!--Source Fault Current-->
+          <custom:CustomEntryCell x:Name="source" LabelText="Source Fault Current (amps)" EntryText="{Binding CalculationInput.SourceFaultCurrent, Converter={StaticResource DecimalConverter}}" WidthC1="60*" WidthC2="40*" IsRequired="true" Keyboard="Numeric" EntryPlaceholder="Ex: 15000" ErrorText="{Binding SourceFaultCurrentErrorMessage}"/>
+        </TableSection>
+      </TableRoot>
+    </custom:CustomTableView >
+    <!--Bottom Bar-->
+    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="20,0,20,5" Orientation="Horizontal" >
+      <Label Text="*" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Red"  FontSize="Small" />
+      <Label Text="Required fields" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small"  />
+    </StackLayout>
+    <StackLayout  BackgroundColor="#E6E6E6" Orientation="Horizontal"  HeightRequest="50"  VerticalOptions="End" HorizontalOptions="Fill" Padding="10,0,20,0" Spacing="20" >
+      <Image x:Name="bntStartOver" WidthRequest="50" Source="StartOverBig.png" VerticalOptions="Fill" HorizontalOptions="StartAndExpand" Aspect="AspectFit" Margin="0,7" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding StartOverCommand}"
+                  NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Image Source="Error.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" IsVisible="{Binding HasErrors}" ></Image>
+      <Label Text="RESET" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End" TextColor="#43A0FD">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding ResetCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Text="NEXT" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="End"  TextColor="{Binding IsEnabled, Converter={StaticResource EnableConverter}}">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer
+                  Command="{Binding NextCommand}"
+                  NumberOfTapsRequired="1" />
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+  </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

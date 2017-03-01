@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A458291-3380-46DB-B890-4C7C8DE19222}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArcFlashCalculator.Forms</RootNamespace>
+    <AssemblyName>ArcFlashCalculator.Forms</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\Button.xaml.cs">
+      <DependentUpon>Button.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\Header.xaml.cs">
+      <DependentUpon>Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\HorizontalText.xaml.cs">
+      <DependentUpon>HorizontalText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\HorizontalTextDangerWithLink.xaml.cs">
+      <DependentUpon>HorizontalTextDangerWithLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\HorizontalTextWithLink.xaml.cs">
+      <DependentUpon>HorizontalTextWithLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\Link.xaml.cs">
+      <DependentUpon>Link.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\Normal.xaml.cs">
+      <DependentUpon>Normal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\NormalWithButton.xaml.cs">
+      <DependentUpon>NormalWithButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\TemplateSelector.cs" />
+    <Compile Include="Cells\TextCentered.xaml.cs">
+      <DependentUpon>TextCentered.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\TextCenteredWithError.xaml.cs">
+      <DependentUpon>TextCenteredWithError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\TextCenteredWithHeader.xaml.cs">
+      <DependentUpon>TextCenteredWithHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BooleanConverter.cs" />
+    <Compile Include="Converters\BoolToGridLengthConverter.cs" />
+    <Compile Include="Converters\DecimalConverter.cs" />
+    <Compile Include="Converters\EnableConverter.cs" />
+    <Compile Include="Converters\IntConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\NameFieldToBool.cs" />
+    <Compile Include="Converters\NullToZeroConverter.cs" />
+    <Compile Include="Converters\PickerConverter.cs" />
+    <Compile Include="Converters\PickerItemsConverter.cs" />
+    <Compile Include="CustomViews\BindablePicker.cs" />
+    <Compile Include="CustomViews\CarouselIndicators.cs" />
+    <Compile Include="CustomViews\CustomDatePicker.cs" />
+    <Compile Include="CustomViews\CustomEntryCell.xaml.cs">
+      <DependentUpon>CustomEntryCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomViews\CustomPickerCell.xaml.cs">
+      <DependentUpon>CustomPickerCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomViews\Hyperlink.xaml.cs">
+      <DependentUpon>Hyperlink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomViews\LabelRequired.xaml.cs">
+      <DependentUpon>LabelRequired.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomViews\RadioButton.xaml.cs">
+      <DependentUpon>RadioButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomViews\TitleBar.xaml.cs">
+      <DependentUpon>TitleBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomViews\UnderlinedLabel.cs" />
+    <Compile Include="Interfaces\ILocalize.cs" />
+    <Compile Include="LanguageSettings.cs" />
+    <Compile Include="Models\SettingItem.cs" />
+    <Compile Include="Services\PlatformCulture.cs" />
+    <Compile Include="TranslateExtension.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
+    <Compile Include="ViewModels\ACResultViewModel.cs" />
+    <Compile Include="ViewModels\ACViewModels\ACCableAndXfmrViewModel.cs" />
+    <Compile Include="ViewModels\ACViewModels\ACCircuitDiagramViewModel.cs" />
+    <Compile Include="ViewModels\ACViewModels\ACSensorViewModel.cs" />
+    <Compile Include="ViewModels\ACViewModels\ACHasXfmrViewModel.cs" />
+    <Compile Include="ViewModels\ACViewModels\ACHasCableViewModel.cs" />
+    <Compile Include="ViewModels\ACViewModels\ACInputTwoViewModel.cs" />
+    <Compile Include="ViewModels\ACViewModels\ACInputOneViewModel.cs" />
+    <Compile Include="ViewModels\SettingViews\MeasuresUnitsViewModel.cs" />
+    <Compile Include="ViewModels\SettingViews\DateFormatViewModel.cs" />
+    <Compile Include="ViewModels\SettingViews\LanguageViewModel.cs" />
+    <Compile Include="ViewModels\MasterPageViewModel.cs" />
+    <Compile Include="ViewModels\Modals\CalculateArcDurationTwoViewModel.cs" />
+    <Compile Include="ViewModels\Modals\CalculateArcDurationOneViewModel.cs" />
+    <Compile Include="ViewModels\CommonInputViewModel.cs" />
+    <Compile Include="ViewModels\DCViewModels\DCCircuitDiagramViewModel.cs" />
+    <Compile Include="ViewModels\DCViewModels\DCInputViewModel.cs" />
+    <Compile Include="ViewModels\Modals\FindSafeWorkingDistanceViewModel.cs" />
+    <Compile Include="ViewModels\LeftMenuViewModel.cs" />
+    <Compile Include="ViewModels\MasterDetailViewModel.cs" />
+    <Compile Include="ViewModels\Modals\PdfViewModel.cs" />
+    <Compile Include="ViewModels\NavigationPageViewModel.cs" />
+    <Compile Include="ViewModels\NavPageViewModel.cs" />
+    <Compile Include="ViewModels\Popups\OpenExternalPopupViewModel.cs" />
+    <Compile Include="ViewModels\ParameterSummaryViewModel.cs" />
+    <Compile Include="ViewModels\Modals\ProtectingClothingViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\Popups\StartOverPopupViewModel.cs" />
+    <Compile Include="ViewModels\Modals\TechnicalHelpViewModel.cs" />
+    <Compile Include="ViewModels\Modals\TripCurvesViewModel.cs" />
+    <Compile Include="ViewModels\Modals\WorkingDistanceTableViewModel.cs" />
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACResult.xaml.cs">
+      <DependentUpon>ACResult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingViews\MeasuresUnits.xaml.cs">
+      <DependentUpon>MeasuresUnits.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingViews\DateFormat.xaml.cs">
+      <DependentUpon>DateFormat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingViews\Language.xaml.cs">
+      <DependentUpon>Language.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\CalculateArcDurationTwo.xaml.cs">
+      <DependentUpon>CalculateArcDurationTwo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\CalculateArcDurationOne.xaml.cs">
+      <DependentUpon>CalculateArcDurationOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\FindSafeWorkingDistance.xaml.cs">
+      <DependentUpon>FindSafeWorkingDistance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomViews\CustomWebView.cs" />
+    <Compile Include="CustomViews\WebViewPage.cs" />
+    <Compile Include="Views\Modals\PdfView.xaml.cs">
+      <DependentUpon>PdfView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NavPage.xaml.cs">
+      <DependentUpon>NavPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\OpenExternalPopup.xaml.cs">
+      <DependentUpon>OpenExternalPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACViews\ACCableAndXfmr.xaml.cs">
+      <DependentUpon>ACCableAndXfmr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACViews\ACCircuitDiagram.xaml.cs">
+      <DependentUpon>ACCircuitDiagram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACViews\ACSensor.xaml.cs">
+      <DependentUpon>ACSensor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACViews\ACHasCable.xaml.cs">
+      <DependentUpon>ACHasCable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACViews\ACHasXfmr.xaml.cs">
+      <DependentUpon>ACHasXfmr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACViews\ACInputTwo.xaml.cs">
+      <DependentUpon>ACInputTwo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ACViews\ACInputOne.xaml.cs">
+      <DependentUpon>ACInputOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommonInput.xaml.cs">
+      <DependentUpon>CommonInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DCViews\DCCircuitDiagram.xaml.cs" />
+    <Compile Include="Views\DCViews\DCInput.xaml.cs" />
+    <Compile Include="Views\LeftMenu.xaml.cs">
+      <DependentUpon>LeftMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomViews\CustomTableView.cs" />
+    <Compile Include="Styles.xaml.cs">
+      <DependentUpon>Styles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterDetail.xaml.cs">
+      <DependentUpon>MasterDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ParameterSummary.xaml.cs">
+      <DependentUpon>ParameterSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\ProtectingClothing.xaml.cs">
+      <DependentUpon>ProtectingClothing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RootPage.xaml.cs">
+      <DependentUpon>RootPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\StartOverPopup.xaml.cs">
+      <DependentUpon>StartOverPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\TechnicalHelp.xaml.cs">
+      <DependentUpon>TechnicalHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\TripCurves.xaml.cs">
+      <DependentUpon>TripCurves.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\WorkingDistanceTable.xaml.cs">
+      <DependentUpon>WorkingDistanceTable.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HockeySDK, Version=1.0.6229.18485, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\HockeySDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Core.6.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Forms, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Forms.6.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Unity.Forms, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Unity.Forms.6.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SegmentedControl.FormsPlugin.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SegmentedControl.FormsPlugin.1.2.4\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\SegmentedControl.FormsPlugin.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xfinium.Pdf.Pcl, Version=6.6.0.16, Culture=neutral, PublicKeyToken=3a083ecebc95eb1c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xfinium.Pdf.Pcl.6.6.0.16\lib\portable-net45+netcore45+wpa81+wp8\Xfinium.Pdf.Pcl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArcFlashCalculator.Core\ArcFlashCalculator.Core.csproj">
+      <Project>{ca21d78d-664c-4443-abc6-d243c3fc8193}</Project>
+      <Name>ArcFlashCalculator.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommonInput.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomViews\LabelRequired.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomViews\CustomEntryCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LeftMenu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACViews\ACInputOne.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACViews\ACInputTwo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACViews\ACHasCable.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACViews\ACHasXfmr.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACViews\ACSensor.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACViews\ACCircuitDiagram.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ParameterSummary.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DCViews\DCCircuitDiagram.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DCViews\DCInput.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RootPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomViews\TitleBar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Settings.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomViews\CustomPickerCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACViews\ACCableAndXfmr.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Popups\StartOverPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomViews\RadioButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\TechnicalHelp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\TripCurves.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Popups\OpenExternalPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomViews\Hyperlink.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\TextCenteredWithHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ACResult.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\TextCentered.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\HorizontalText.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\HorizontalTextWithLink.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\Normal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\HorizontalTextDangerWithLink.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\Button.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\FindSafeWorkingDistance.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\NormalWithButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\WorkingDistanceTable.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\Link.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\ProtectingClothing.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\CalculateArcDurationOne.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\CalculateArcDurationTwo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NavPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\Header.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cells\TextCenteredWithError.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SettingViews\Language.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SettingViews\DateFormat.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SettingViews\MeasuresUnits.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Modals\PdfView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+  </Target>
+</Project>

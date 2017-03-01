@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ArcFlashCalculator.Forms.Cells.NormalWithButton">
+  <StackLayout Padding="20,10" Spacing="5" BackgroundColor="{Binding BackgroundColor}">
+    <Label Text="{Binding Title}" TextColor="{Binding TitleColor}"  />
+    <Label Text="{Binding Text}" TextColor="{Binding TextColor}" FontAttributes="{Binding FontAttributes}"/>
+    <RelativeLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+      <Button x:Name="button" BackgroundColor="#D1D1D1" WidthRequest="260" HeightRequest="40" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+      <StackLayout Orientation="Horizontal" Padding="10,5" Spacing="10"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=button , Property=Width,Factor=1,Constant=0}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=button , Property=Height,Factor=1,Constant=0}">
+        <Image Source="NewCalc.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+        <Label Text="Use for New Calculation" HorizontalOptions="StartAndExpand" TextColor="Black" VerticalOptions="CenterAndExpand" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding Command}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+    </RelativeLayout>
+  </StackLayout>
+</ViewCell>

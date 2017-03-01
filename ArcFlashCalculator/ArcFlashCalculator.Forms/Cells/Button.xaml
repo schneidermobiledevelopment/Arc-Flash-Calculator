@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ArcFlashCalculator.Forms.Cells.Button">
+  <StackLayout Orientation="Horizontal"  VerticalOptions="CenterAndExpand" Padding="20,10">
+    <RelativeLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+      <Button x:Name="button" BackgroundColor="#3DCD58" WidthRequest="260" HeightRequest="60" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+      <StackLayout Orientation="Horizontal" Padding="10,5" Spacing="10" 
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=button , Property=Width,Factor=1,Constant=0}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=button , Property=Height,Factor=1,Constant=0}">
+        <Image Source="FindPPE.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+        <Label Text="Find Safe Working Distance for Available PPE" HorizontalOptions="StartAndExpand" TextColor="White" VerticalOptions="CenterAndExpand" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+        <StackLayout.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding Command}"/>
+        </StackLayout.GestureRecognizers>
+      </StackLayout>
+    </RelativeLayout>
+  </StackLayout>
+</ViewCell>
